@@ -1,0 +1,40 @@
+.container {
+  max-width: 600px;
+  margin: 30% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  background-color: transparent;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+}
+.item {
+  padding: 0px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 50% auto;
+  }
+}
