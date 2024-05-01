@@ -1,5 +1,5 @@
 import React from "react";
-import "./MenuPage.css";
+import "./Menu.css";
 const MenuPage = () => {
   return (
     <div>
