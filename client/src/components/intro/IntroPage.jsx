@@ -4,13 +4,9 @@ import { ReactComponent as Logo } from "./logo/logo.svg";
 const MainPage = () => {
   return (
     <div>
-      <div className="navbar"></div>
       <div className="container">
-        <div className="item">
-          <Logo />
-        </div>
+        <Logo />
       </div>
-      <div className="footer"></div>
     </div>
   );
 };

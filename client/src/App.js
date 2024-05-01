@@ -5,25 +5,25 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import MenuPage from "./components/menu/MenuPage.jsx";
+import CustomerMenuPage from "./components/menu/pages/CustomerMenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
-import LoginPage from "./components/login/LoginPage.jsx";
+import LoginPage from "./components/users/pages/LoginPage.jsx";
 import "./App.css";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/manager" exact>
           <IntroPage />
         </Route>
-        <Route path="/menu" exact>
-          <MenuPage />
+        <Route path="/customer/menu" exact>
+          <CustomerMenuPage />
         </Route>
-        <Route path="/login" exact>
+        <Route path="/manager/login" exact>
           <LoginPage />
         </Route>
-        <Redirect to="/" />
+        <Redirect to="/manager" />
       </Switch>
     </Router>
   );
