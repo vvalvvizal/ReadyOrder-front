@@ -1,29 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch,
 } from "react-router-dom";
-import CustomerMenuPage from "./components/menu/pages/CustomerMenuPage.jsx";
+import MenuPage from "./components/menu/pages/MenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
+import CartPage from "./components/order/pages/CartPage.jsx";
 import LoginPage from "./components/users/pages/LoginPage.jsx";
+import ManagementPage from "./components/main/ManagementPage.jsx";
+import QRPage from "./components/QR/pages/QRPage.jsx";
+import RecipePage from "./components/order/pages/RecipePage.jsx";
 import "./App.css";
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 3000); //3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
       <Switch>
-        <Route path="/manager" exact>
-          <IntroPage />
+        <Route path="/" exact>
+          {showIntro ? (
+            <IntroPage />
+          ) : isLoggedIn ? (
+            <Redirect to="/main" />
+          ) : (
+            <Redirect to="/authenticate" />
+          )}
         </Route>
-        <Route path="/customer/menu" exact>
-          <CustomerMenuPage />
-        </Route>
-        <Route path="/manager/login" exact>
+        <Route path="/authenticate" exact>
           <LoginPage />
         </Route>
-        <Redirect to="/manager" />
+        <Route path="/main">
+          <ManagementPage />
+        </Route>
+        <Route path="/store/menu" exact>
+          <MenuPage />
+        </Route>
+        <Route path="/store/qr" exact>
+          <QRPage />
+        </Route>
+        <Route path="/order/recipe" exact>
+          <RecipePage />
+        </Route>
+        <Route path="/order/cart" exact>
+          <CartPage />
+        </Route>
+        <Redirect to="/" />
       </Switch>
     </Router>
   );
