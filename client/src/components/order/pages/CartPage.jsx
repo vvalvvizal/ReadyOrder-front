@@ -1,5 +1,5 @@
 import React from "react";
-import "./CardPage.css";
+import "./CartPage.css";
 const CartPage = () => {
   return (
     <div>
