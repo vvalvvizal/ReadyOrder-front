@@ -9,8 +9,10 @@ import MenuPage from "./components/menu/pages/MenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
 import CartPage from "./components/order/pages/CartPage.jsx";
 import LoginPage from "./components/users/pages/LoginPage.jsx";
-import ManagementPage from "./components/main/ManagementPage.jsx";
-import QRPage from "./components/QR/pages/QRPage.jsx";
+import ManagementPage from "./components/store/pages/management/ManagementPage.jsx";
+import ManagementMenuPage from "./components/store/pages/management/ManagementMenuPage.jsx";
+import QRPage from "./components/store/pages/qr/QRPage.jsx";
+import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import RecipePage from "./components/order/pages/RecipePage.jsx";
 import "./App.css";
 
@@ -43,11 +45,18 @@ function App() {
         <Route path="/main">
           <ManagementPage />
         </Route>
+        <Route path="/store/state" exact>
+          <ManagementStatePage />
+        </Route>
         <Route path="/store/menu" exact>
-          <MenuPage />
+          <ManagementMenuPage />
         </Route>
         <Route path="/store/qr" exact>
           <QRPage />
+        </Route>
+
+        <Route path="/order/menu" exact>
+          <MenuPage />
         </Route>
         <Route path="/order/recipe" exact>
           <RecipePage />

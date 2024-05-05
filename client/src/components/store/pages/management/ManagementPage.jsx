@@ -1,8 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./ManagementPage.css";
-import { ReactComponent as StoreIcon } from "./util/icon/store.svg";
-import { ReactComponent as MenuIcon } from "./util/icon/menu.svg";
-const MainPage = () => {
+import { ReactComponent as StoreIcon } from "../../util/icon/store.svg";
+import { ReactComponent as MenuIcon } from "../../util/icon/menu.svg";
+const ManagementPage = () => {
   const User = "모닝건";
   return (
     <div>
@@ -12,14 +13,15 @@ const MainPage = () => {
       </div>
       <div className="buttonbox">
         <div className="management">
-          <div className="store">
+          <NavLink to="/store/state" className="store-button">
             <StoreIcon />
             <p>매장 관리</p>
-          </div>
-          <div className="menu">
+          </NavLink>
+
+          <NavLink to="/store/menu" className="menu-button">
             <MenuIcon />
             <p>메뉴 관리</p>
-          </div>
+          </NavLink>
         </div>
         <div className="makeQR">
           <p>QR코드 재생성</p>
@@ -28,4 +30,4 @@ const MainPage = () => {
     </div>
   );
 };
-export default MainPage;
+export default ManagementPage;
