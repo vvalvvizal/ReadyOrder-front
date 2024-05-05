@@ -1,7 +1,7 @@
 .textbox {
   display: flex;
   flex-direction: row;
-  margin: 30% 10% 20% 10%;
+  margin: 10% 10% 0% 20%;
   /*상 우 하 좌*/
 }
 .hi {
@@ -35,7 +35,7 @@
   margin-bottom: 10px;
 }
 
-.store {
+.store-button {
   margin-right: 3px;
   display: flex;
   width: 143px;
@@ -46,12 +46,13 @@
   gap: 23px;
   border-radius: 10px;
   background: #fff;
-
+  border-width: 0;
+  text-decoration: none;
   /* spread */
   box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.16);
 }
 
-.store p {
+.store-button p {
   color: #828282;
   text-align: center;
   font-family: Nunito;
@@ -60,7 +61,9 @@
   font-weight: 700;
   line-height: normal;
 }
-.menu {
+.menu-button {
+  text-decoration: none;
+  border-width: 0;
   margin-left: 3px;
   display: flex;
   width: 143px;
@@ -82,7 +85,7 @@
   display: flex;
   flex-direction: column;
 }
-.menu p {
+.menu-button p {
   color: #828282;
   text-align: center;
   font-family: Nunito;
