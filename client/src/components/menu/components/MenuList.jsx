@@ -1,6 +1,7 @@
 import React from "react";
 
 import MenuItem from "./MenuItem";
+
 const MenuList = (props) => {
   if (props.items.length == 0)
     return (
@@ -9,19 +10,21 @@ const MenuList = (props) => {
       </div>
     );
   return (
-    <ul>
+    <div>
       {props.items.map((menu) => {
         return (
-          <MenuItem
-            id={menu.id}
-            img={menu.img}
-            name={menu.name}
-            price={menu.price}
-            tag={menu.tag}
-          />
+          <div className="menu_list">
+            <MenuItem
+              id={menu._id}
+              img={menu.image_url}
+              tag={menu.tag}
+              name={menu.title}
+              price={menu.price}
+            />
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 };
 export default MenuList;

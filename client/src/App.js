@@ -5,7 +5,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import MenuPage from "./components/menu/pages/MenuPage.jsx";
+import MenuPage from "./components/order/pages/MenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
 import CartPage from "./components/order/pages/CartPage.jsx";
 import LoginPage from "./components/users/pages/LoginPage.jsx";
@@ -15,7 +15,7 @@ import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import RecipePage from "./components/order/pages/RecipePage.jsx";
 import "./App.css";
-
+import Header from "./shared/header/Header.jsx";
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -36,19 +36,21 @@ function App() {
           ) : isLoggedIn ? (
             <Redirect to="/main" />
           ) : (
-            <Redirect to="/authenticate" />
+            <Redirect to="/login" />
           )}
         </Route>
-        <Route path="/authenticate" exact>
+        <Route path="/login" exact>
           <LoginPage />
         </Route>
         <Route path="/main">
           <ManagementPage />
         </Route>
         <Route path="/store/state" exact>
+          <Header />
           <ManagementStatePage />
         </Route>
         <Route path="/store/menu" exact>
+          <Header />
           <ManagementMenuPage />
         </Route>
         <Route path="/store/qr" exact>
@@ -56,6 +58,7 @@ function App() {
         </Route>
 
         <Route path="/order/menu" exact>
+          <Header />
           <MenuPage />
         </Route>
         <Route path="/order/recipe" exact>

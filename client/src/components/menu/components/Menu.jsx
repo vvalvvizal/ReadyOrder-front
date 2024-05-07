@@ -1,44 +1,29 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import MenuList from "./MenuList";
 import "./Menu.css";
-const MenuPage = (props) => {
-  const Menu = [
-    {
-      id: 0,
-      name: "Gin & Tonic",
-      tag: "#Jin #깔끔한 맛",
-      price: "12,000 ₩",
-      img: "",
-    },
-    {
-      id: 1,
-      name: "New York Sour",
-      tag: "#Bourbon #비주얼 #레몬",
-      price: "12,000 ₩",
-      img: "",
-    },
-    {
-      id: 2,
-      name: "Brandy Alexander",
-      tag: "#Cognac #부드러움 #카카오",
-      price: "12,000 ₩",
-      img: "",
-    },
-    {
-      id: 3,
-      name: "Love Heart",
-      tag: "#Vodka #기념일 #스파클",
-      price: "12,000 ₩",
-      img: "",
-    },
-    {
-      id: 4,
-      name: "Lotus Espresso",
-      tag: "#Rum #에스프레소",
-      price: "12,000 ₩",
-      img: "",
-    },
-  ];
-  return <MenuList items={Menu} />;
+
+const MenuRoot = (props) => {
+  let [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/api/menus");
+        console.log(response.data); // 받은 데이터 확인
+        setItems(response.data);
+      } catch (error) {
+        console.error("Error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <MenuList items={items} />
+    </div>
+  );
 };
-export default MenuPage;
+export default MenuRoot;
