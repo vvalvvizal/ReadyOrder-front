@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./MenuItem.css";
-const UserItem = (props) => {
+const MenuItem = (props) => {
   return (
-    <li className="menu-item">
-      {/* <Link to={`/${props.id}/menu`}> */}
-      <div className="menu-item-content">
-        <div className="menu-item-name">{props.name}</div>
-        <div className="menu-item-price">{props.price}</div>
-        <div className="menu-item-tag">{props.tag}</div>
+    <div className="item-content">
+      <div className="item-textbox">
+        <div className="item-title">{props.name}</div>
+        <div className="item-tag-box">
+          <p>{props.tag}</p>
+        </div>
+        <div className="item-price">
+          <p>{props.price}₩</p>
+        </div>
+      </div>
+      <div className="item-img">
         <img src={props.img} />
       </div>
-      {/* </Link> */}
-    </li>
+    </div>
   );
 };
-export default UserItem;
+export default MenuItem;

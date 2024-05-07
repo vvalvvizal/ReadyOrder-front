@@ -1,0 +1,31 @@
+.order-view {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* 가득 차도록 설정 */
+  flex-shrink: 0;
+  background: #f39800;
+  display: flex;
+  z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
+  height: 86px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cart-box {
+  z-index: 1001;
+  width: 32.584px;
+  height: 34.061px;
+  flex-shrink: 0;
+}
+.order-view p {
+  color: #fff;
+  -webkit-text-stroke-width: 0.30000001192092896;
+  -webkit-text-stroke-color: #fff;
+  font-family: "Hermeneus One";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+}
