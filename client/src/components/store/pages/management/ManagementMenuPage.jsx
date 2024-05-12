@@ -1,12 +1,20 @@
 import React from "react";
 import Menu from "../../../menu/components/Menu";
+import SelectButton from "../../util/select/SelectButton";
 const ManagementMenuPage = () => {
-  const parents = "management_menu";
+  const MenuGroup = [
+    { label: "간식 food" },
+    { label: "main food" },
+    { label: "side food" },
+  ];
+
   return (
     <div>
       <div className="content">
-        <p>관리자 메뉴페이지</p>
-        <Menu />
+        <div className="menuGroup">
+          <SelectButton MenuGroup={MenuGroup} />
+        </div>
+        <Menu userType={"admin"} />
       </div>
     </div>
   );

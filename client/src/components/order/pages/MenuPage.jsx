@@ -1,22 +1,19 @@
 import React from "react";
 import Menu from "../../menu/components/Menu";
 import Footer from "../../../shared/footer/Footer";
-import { NavLink } from "react-router-dom";
 import "./MenuPage.css";
 
 const MenuPage = () => {
   const parents = "view_cart";
+
   return (
     <div>
       <div className="content">
-        <div className="menu-category">
-          <Menu />
-        </div>
+        <Menu userType={"customer"} />
       </div>
-      <NavLink to="/order/cart">
-        <Footer parents={parents} />
-      </NavLink>
+      <Footer parents={parents} />
     </div>
   );
 };
+
 export default MenuPage;
