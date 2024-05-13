@@ -1,30 +1,30 @@
-import React from "react";
-
-import MenuItem from "./MenuItem";
+import React, { useState } from "react";
+import MenuItem from "../../order/components/MenuItem";
+import ManagementMenuItem from "../../store/components/ManagementMenuItem";
 
 const MenuList = (props) => {
-  if (props.items.length == 0)
+  const { categories, menus } = props.items;
+  // console.log(categories);
+  if (!menus || menus.length === 0) {
     return (
       <div>
-        <h2>No Menu found</h2>
+        <p>No Menu found</p>
       </div>
     );
-  return (
-    <div>
-      {props.items.map((menu) => {
-        return (
-          <div className="menu_list">
-            <MenuItem
-              id={menu._id}
-              img={menu.image_url}
-              tag={menu.tag}
-              name={menu.title}
-              price={menu.price}
-            />
-          </div>
-        );
-      })}
+  }
+
+  const menuProps = props.userType;
+  console.log(menuProps);
+
+  return menuProps === "admin" ? (
+    <div className="menu_list">
+      <ManagementMenuItem items={menus} />
+    </div>
+  ) : (
+    <div className="menu_list">
+      <MenuItem categories={categories} items={menus} />
     </div>
   );
 };
+
 export default MenuList;

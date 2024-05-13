@@ -1,0 +1,10 @@
+.checkbox-container {
+  cursor: pointer;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 5px 4.999px 4.999px 5px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}

@@ -7,4 +7,10 @@
   background-color: transparent;
   border-radius: 10px;
   padding: 20px;
+  align-items: flex-start;
+}
+.menuGroup {
+  width: 100%;
+  height: auto;
+  margin: 20px 20px;
 }

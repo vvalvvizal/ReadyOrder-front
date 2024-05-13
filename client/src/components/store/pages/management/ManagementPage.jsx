@@ -5,6 +5,7 @@ import { ReactComponent as StoreIcon } from "../../util/icon/store.svg";
 import { ReactComponent as MenuIcon } from "../../util/icon/menu.svg";
 const ManagementPage = () => {
   const User = "모닝건";
+
   return (
     <div className="content">
       <div className="textbox">
