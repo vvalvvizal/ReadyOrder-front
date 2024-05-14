@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ManagementMenuItem.module.css"; // CSS 모듈 import
-import Checkbox from "../util/button/CheckBox";
+import Checkbox from "./checkbox/CheckBox";
 
 const ManagementMenuItem = (props) => {
   // props.items 객체를 배열로 변환합니다.

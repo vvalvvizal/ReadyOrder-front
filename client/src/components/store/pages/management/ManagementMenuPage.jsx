@@ -1,19 +1,20 @@
-import React from "react";
-import Menu from "../../../menu/components/Menu";
-import SelectButton from "../../util/select/SelectButton";
+import React, { useState } from "react";
+import Menu from "../../../menu/components/MenuRoot";
+import Category from "../../components/category/CategoryRoot";
 const ManagementMenuPage = () => {
-  const MenuGroup = [
-    { label: "간식 food" },
-    { label: "main food" },
-    { label: "side food" },
-  ];
+  // const [menuItems, setMenuItems] = useState([]);
+
+  // const handleUpdate = (updatedItems) => {
+  //   // 삭제 후의 아이템 목록으로 상태를 업데이트합니다.
+  //   setMenuItems(updatedItems);
+  // };
 
   return (
-    <div>
-      <div className="content">
-        <div className="menuGroup">
-          <SelectButton MenuGroup={MenuGroup} />
-        </div>
+    <div className="content">
+      <div className="menuGroup">
+        <Category />
+      </div>
+      <div>
         <Menu userType={"admin"} />
       </div>
     </div>
