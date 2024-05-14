@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "../../menu/components/Menu";
+import Menu from "../../menu/components/MenuRoot";
 import Footer from "../../../shared/footer/Footer";
 import "./MenuPage.css";
 
