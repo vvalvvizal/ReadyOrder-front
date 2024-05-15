@@ -19,6 +19,7 @@ const MenuList = (props) => {
   return menuProps === "admin" ? (
     <div className="menu_list">
       <ManagementMenuItem items={menus} />
+      <button onClick={props.handleDelete}>삭제</button>
     </div>
   ) : (
     <div className="menu_list">
