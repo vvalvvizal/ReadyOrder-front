@@ -1,46 +1,64 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
+import { checkdItemsContext } from "../../store/components/ManagementMenuItem";
 import "./MenuRoot.css";
 
 const MenuRoot = (props) => {
   const [items, setItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/menus/6638862ce7596046ed2b4490"
+      );
+      setItems(response.data);
+    } catch (error) {
+      console.error("Get Error", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/menus/6638862ce7596046ed2b4490"
-        );
-        console.log(response.data);
-        setItems(response.data);
-      } catch (error) {
-        console.error("Error", error);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, []); // 빈 배열을 의존성 배열로 사용하여 컴포넌트가 처음 렌더링될 때만 fetchData 함수가 실행되도록 함
 
-  // const handleDelete = async () => {
-  //   try {
-  //     const response = await axios.delete(
-  //       "http://localhost:5000/api/menus/663a1d124fe67d153b29c8f4"
-  //     );
-  //     console.log(response.data);
-  //     // 업데이트 콜백을 호출하여 부모 컴포넌트에 삭제된 아이템을 전달합니다.
-  //   } catch (error) {
-  //     console.error("Error", error);
-  //   }
-  // };
+  const handleDelete = async () => {
+    try {
+      const itemsToDelete = Object.keys(checkedItems).filter(
+        (key) => checkedItems[key]
+      );
+      console.log(itemsToDelete);
 
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
+      const accessToken = "";
+      const deletePromises = itemsToDelete.map((id) =>
+        axios.delete(`http://localhost:5000/api/menus/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+      );
+      await Promise.all(deletePromises);
+      console.log("delete ok");
+
+      // 삭제 후 다시 데이터 가져오기
+      fetchData();
+    } catch (error) {
+      console.error("Delete Error", error);
+    }
+  };
+
   return (
-    <div>
-      <MenuList items={items} userType={props.userType} />
-    </div>
+    <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
+      <div>
+        <MenuList
+          items={items}
+          userType={props.userType}
+          handleDelete={handleDelete}
+        />
+      </div>
+    </checkdItemsContext.Provider>
   );
 };
+
 export default MenuRoot;
