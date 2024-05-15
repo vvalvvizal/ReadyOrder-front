@@ -9,7 +9,6 @@ const MenuItem = (props) => {
       items,
     })
   );
-
   const [activeCategory, setActiveCategory] = useState(props.categories[0]);
 
   const handleCategory = (category) => {
