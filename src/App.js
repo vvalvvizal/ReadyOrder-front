@@ -14,6 +14,7 @@ import ManagementMenuPage from "./components/store/pages/management/ManagementMe
 import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import RecipePage from "./components/order/pages/RecipePage.jsx";
+import ManagementCreateMenuPage from "./components/store/pages/management/ManagementCreateMenuPage.jsx";
 import "./App.css";
 import Header from "./shared/header/Header.jsx";
 function App() {
@@ -52,6 +53,10 @@ function App() {
         <Route path="/store/menu" exact>
           <Header />
           <ManagementMenuPage />
+        </Route>
+        <Route path="/store/menu/create" exact>
+          <Header />
+          <ManagementCreateMenuPage />
         </Route>
         <Route path="/store/qr" exact>
           <QRPage />
