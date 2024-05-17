@@ -1,8 +1,8 @@
-import react, { useState } from "react";
+import react, { useState, createContext } from "react";
 import Select from "react-select";
+export const SelectedItemsContext = createContext();
 
 const SelectButton = (props) => {
-  // console.log("selectbutton", props.categories.categories[0]);
   const [selectedOption, setSelectedOption] = useState();
 
   const customStyles = {

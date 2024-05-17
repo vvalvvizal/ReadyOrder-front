@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
 import { checkdItemsContext } from "../../store/components/ManagementMenuItem";
-import "./MenuRoot.css";
 
 const MenuRoot = (props) => {
   const [items, setItems] = useState([]);
@@ -48,6 +47,22 @@ const MenuRoot = (props) => {
     }
   };
 
+  // const handleCreate = async () => {
+  //   const accessToken = "";
+  //   try {
+  //     axios.delete(`http://localhost:5000/api/menus/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //       },
+  //       body: JSON.stringify({}),
+  //     });
+  //     console.log("create ok");
+  //     fetchData();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   return (
     <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
       <div>
@@ -55,6 +70,7 @@ const MenuRoot = (props) => {
           items={items}
           userType={props.userType}
           handleDelete={handleDelete}
+          // handleCreate={handleCreate}
         />
       </div>
     </checkdItemsContext.Provider>

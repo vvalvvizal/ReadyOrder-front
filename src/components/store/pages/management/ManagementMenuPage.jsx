@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Menu from "../../../menu/components/MenuRoot";
-import Category from "../../components/category/CategoryRoot";
+
 const ManagementMenuPage = () => {
   // const [menuItems, setMenuItems] = useState([]);
 
@@ -11,9 +11,6 @@ const ManagementMenuPage = () => {
 
   return (
     <div className="content">
-      <div className="menuGroup">
-        <Category />
-      </div>
       <div>
         <Menu userType={"admin"} />
       </div>

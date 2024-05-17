@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import MenuItem from "../../order/components/MenuItem";
 import ManagementMenuItem from "../../store/components/ManagementMenuItem";
-
+import style from "./MenuList.css";
+import Category from "../../store/components/category/CategoryRoot";
+import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
+import { NavLink } from "react-router-dom";
 const MenuList = (props) => {
   const { categories, menus } = props.items;
   // console.log(categories);
@@ -17,12 +20,25 @@ const MenuList = (props) => {
   console.log(menuProps);
 
   return menuProps === "admin" ? (
-    <div className="menu_list">
+    <div className={style["menu_list"]}>
+      <div className="top-content" onClick={props.handleDelete}>
+        <div className={style["category-select"]}>
+          <Category />
+        </div>
+        <div className="delete-button">
+          <p>선택 삭제</p>
+        </div>
+      </div>
       <ManagementMenuItem items={menus} />
-      <button onClick={props.handleDelete}>삭제</button>
+      <NavLink to="/store/menu/create" style={{ textDecoration: "none" }}>
+        <div className="addMenu" onClick={props.handleCreate}>
+          <MenuAddPlus />
+          <p>메뉴 추가</p>
+        </div>
+      </NavLink>
     </div>
   ) : (
-    <div className="menu_list">
+    <div className={style.menu_list}>
       <MenuItem categories={categories} items={menus} />
     </div>
   );
