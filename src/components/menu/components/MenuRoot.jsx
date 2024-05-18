@@ -9,7 +9,7 @@ const MenuRoot = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/menus/6638862ce7596046ed2b4490");
+      const response = await axios.get("/api/menus/6648141264fced5eebd93f27");
       setItems(response.data);
     } catch (error) {
       console.error("Get Error", error);

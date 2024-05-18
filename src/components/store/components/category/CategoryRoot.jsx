@@ -8,7 +8,7 @@ const CategoryRoot = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "/api/menus/categories/6638862ce7596046ed2b4490"
+          "/api/menus/categories/6648141264fced5eebd93f27"
         );
         console.log(response.data);
         setCategories(response.data);
