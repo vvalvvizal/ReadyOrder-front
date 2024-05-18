@@ -9,9 +9,7 @@ const MenuRoot = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/menus/6638862ce7596046ed2b4490"
-      );
+      const response = await axios.get("/api/menus/6638862ce7596046ed2b4490");
       setItems(response.data);
     } catch (error) {
       console.error("Get Error", error);
@@ -31,7 +29,7 @@ const MenuRoot = (props) => {
 
       const accessToken = "";
       const deletePromises = itemsToDelete.map((id) =>
-        axios.delete(`http://localhost:5000/api/menus/${id}`, {
+        axios.delete(`/api/menus/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -47,22 +45,21 @@ const MenuRoot = (props) => {
     }
   };
 
-  // const handleCreate = async () => {
-  //   const accessToken = "";
-  //   try {
-  //     axios.delete(`http://localhost:5000/api/menus/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //       },
-  //       body: JSON.stringify({}),
-  //     });
-  //     console.log("create ok");
-  //     fetchData();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
+  const handleCreate = async (body) => {
+    const accessToken = "";
+    try {
+      await axios.post(`/api/menus/`, body, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("create ok");
+      fetchData();
+    } catch (error) {
+      console.log("Create Error", error);
+    }
+  };
   return (
     <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
       <div>
@@ -70,7 +67,7 @@ const MenuRoot = (props) => {
           items={items}
           userType={props.userType}
           handleDelete={handleDelete}
-          // handleCreate={handleCreate}
+          handleCreate={handleCreate}
         />
       </div>
     </checkdItemsContext.Provider>
