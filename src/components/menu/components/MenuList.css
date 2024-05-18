@@ -30,7 +30,7 @@
 .delete-button p {
   align-items: flex-end;
   color: #f39800;
-  text-align: center;
+  text-align: right;
   font-family: Poppins;
   font-size: 15px;
   font-style: normal;
@@ -51,6 +51,7 @@
   justify-content: center;
   border: transparent;
   background-color: transparent;
+  flex-shrink: 0;
 }
 .addMenu {
   display: flex;

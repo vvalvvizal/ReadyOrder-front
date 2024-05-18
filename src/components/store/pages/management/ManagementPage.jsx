@@ -24,9 +24,9 @@ const ManagementPage = () => {
             <p>메뉴 관리</p>
           </NavLink>
         </div>
-        <div className="makeQR">
+        <NavLink to="/store/qr" className="makeQR">
           <p>QR코드 재생성</p>
-        </div>
+        </NavLink>
       </div>
     </div>
   );
