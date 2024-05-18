@@ -10,6 +10,7 @@
     "cors": "^2.8.5",
     "http-proxy-middleware": "^3.0.0",
     "primereact": "^10.6.5",
+    "proxy": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-image-file": "^0.3.0",
@@ -42,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
