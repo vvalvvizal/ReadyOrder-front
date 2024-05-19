@@ -26,7 +26,7 @@ const SelectButton = (props) => {
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    if (props) {
+    if (props.onCategoryChange) {
       props.onCategoryChange(selectedOption.value);
     }
     //console.log("선택된 옵션:", selectedOption.value);
