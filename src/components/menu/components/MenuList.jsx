@@ -21,11 +21,11 @@ const MenuList = (props) => {
 
   return menuProps === "admin" ? (
     <div className={style["menu_list"]}>
-      <div className="top-content" onClick={props.handleDelete}>
+      <div className="top-content">
         <div className={style["category-select"]}>
           <Category />
         </div>
-        <div className="delete-button">
+        <div className="delete-button" onClick={props.handleDelete}>
           <p>선택 삭제</p>
         </div>
       </div>

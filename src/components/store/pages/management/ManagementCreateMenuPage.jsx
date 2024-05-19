@@ -1,24 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ManagementCreateMenuPage.module.css";
 import Category from "../../components/category/CategoryRoot";
 import { Form, Uploader } from "rsuite";
 import CameraRetroIcon from "@rsuite/icons/legacy/CameraRetro";
 
-const ManagementCreateMenuPage = (props) => {
+const ManagementCreateMenuPage = ({ onSave }) => {
+  const [category, setCategory] = useState("");
   const [menuName, setMenuName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
 
   const handleSave = () => {
-    const formData = {
-      menuName,
-      price,
-      description,
-      image,
+    const body = {
+      title: menuName,
+      price: parseInt(price, 10),
+      image_url: "https://picsum.photos/200",
+      tag: description,
+      creator: process.env.REACT_APP_USER_ID,
+      category: category,
+      available: true,
     };
 
-    props.handleCreate(formData);
+    onSave(body);
+  };
+
+  const handleCategoryChange = (selectedCategory) => {
+    setCategory(selectedCategory);
   };
 
   return (
@@ -29,8 +37,9 @@ const ManagementCreateMenuPage = (props) => {
       <Form>
         <div className={styles.inputContent}>
           <div className={styles["category"]}>
-            <Category />
+            <Category onCategoryChange={handleCategoryChange} />
           </div>
+
           <input
             className={styles["menu-input"]}
             placeholder="메뉴명"
@@ -60,6 +69,7 @@ const ManagementCreateMenuPage = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+
           <div className={styles["save-button"]} onClick={handleSave}>
             <p>저장</p>
           </div>

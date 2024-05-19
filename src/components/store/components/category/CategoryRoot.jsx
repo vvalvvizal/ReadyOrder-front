@@ -1,14 +1,15 @@
 import react, { useState, useEffect } from "react";
 import axios from "axios";
 import SelectButton from "./CategorySelectButton";
-const CategoryRoot = () => {
+
+const CategoryRoot = ({ onCategoryChange }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "/api/menus/categories/6648141264fced5eebd93f27"
+          `/api/menus/categories/${process.env.REACT_APP_USER_ID}`
         );
         console.log(response.data);
         setCategories(response.data);
@@ -23,6 +24,8 @@ const CategoryRoot = () => {
   useEffect(() => {
     console.log(categories);
   }, [categories]);
-  return <SelectButton categories={categories} />;
+  return (
+    <SelectButton categories={categories} onCategoryChange={onCategoryChange} />
+  );
 };
 export default CategoryRoot;

@@ -1,6 +1,5 @@
-import react, { useState, createContext } from "react";
+import react, { useState } from "react";
 import Select from "react-select";
-export const SelectedItemsContext = createContext();
 
 const SelectButton = (props) => {
   const [selectedOption, setSelectedOption] = useState();
@@ -27,7 +26,10 @@ const SelectButton = (props) => {
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    // console.log("선택된 옵션:", selectedOption.value);
+    if (props) {
+      props.onCategoryChange(selectedOption.value);
+    }
+    //console.log("선택된 옵션:", selectedOption.value);
   };
 
   // 0: {label: '간식 food', value: '간식 food'}
