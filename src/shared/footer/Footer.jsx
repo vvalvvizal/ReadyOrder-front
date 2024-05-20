@@ -5,7 +5,7 @@ import "./Footer.css";
 const Foot = (props) => {
   let content;
 
-  switch (props.parents) {
+  switch (props.viewFooter) {
     case "view_cart":
       content = (
         <div className="order-view">

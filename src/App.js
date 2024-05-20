@@ -14,10 +14,10 @@ import ManagementMenuPage from "./components/store/pages/management/ManagementMe
 import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import RecipePage from "./components/order/pages/RecipePage.jsx";
-// import ManagementCreateMenuPage from "./components/store/pages/management/ManagementCreateMenuPage.jsx";
+import Header from "./shared/header/Header.jsx";
 import ManagementCreateMenuRoot from "./components/store/pages/management/ManagementCreateMenuRoot.jsx";
 import "./App.css";
-import Header from "./shared/header/Header.jsx";
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -41,6 +41,7 @@ function App() {
             <Redirect to="/login" />
           )}
         </Route>
+
         <Route path="/login" exact>
           <LoginPage />
         </Route>
@@ -48,15 +49,12 @@ function App() {
           <ManagementPage />
         </Route>
         <Route path="/store/state" exact>
-          <Header />
           <ManagementStatePage />
         </Route>
         <Route path="/store/menu" exact>
-          <Header />
           <ManagementMenuPage />
         </Route>
         <Route path="/store/menu/create" exact>
-          <Header />
           <ManagementCreateMenuRoot />
         </Route>
         <Route path="/store/qr" exact>
@@ -64,7 +62,6 @@ function App() {
         </Route>
 
         <Route path="/order/menu" exact>
-          <Header />
           <MenuPage />
         </Route>
         <Route path="/order/recipe" exact>
