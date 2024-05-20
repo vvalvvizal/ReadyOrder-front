@@ -1,17 +1,22 @@
 import React from "react";
 import Menu from "../../menu/components/MenuRoot";
 import Footer from "../../../shared/footer/Footer";
-import "./MenuPage.css";
+import Header from "../../../shared/header/Header";
+import { NavLink } from "react-router-dom";
+import styles from "./MenuPage.module.css";
 
 const MenuPage = () => {
-  const parents = "view_cart";
-
+  const viewFooter = "view_cart";
+  const viewHeader = "order";
   return (
     <div>
-      <div className="content">
+      <Header viewHeader={viewHeader} />
+      <div className={styles.content}>
         <Menu userType={"customer"} />
       </div>
-      <Footer parents={parents} />
+      <NavLink to="/order/cart">
+        <Footer viewFooter={viewFooter} />
+      </NavLink>
     </div>
   );
 };

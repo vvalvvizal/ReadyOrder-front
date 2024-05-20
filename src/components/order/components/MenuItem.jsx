@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./MenuItem.module.css"; // CSS 모듈 import
-
+import { ReactComponent as AddCart } from "../util/icon/AddCart.svg";
 const MenuItem = (props) => {
   // props.items 객체를 배열로 변환합니다.
   const categoryArray = Object.entries(props.items).map(
@@ -10,11 +10,24 @@ const MenuItem = (props) => {
     })
   );
   const [activeCategory, setActiveCategory] = useState(props.categories[0]);
+  const [cart, setCart] = useState({});
 
   const handleCategory = (category) => {
     setActiveCategory(category);
   };
 
+  const handleAddMenu = (id) => {
+    setCart((prevCart) => {
+      const updatedCart = { ...prevCart };
+      if (updatedCart[id]) {
+        updatedCart[id] += 1;
+      } else {
+        updatedCart[id] = 1;
+      }
+      console.log(updatedCart);
+      return updatedCart;
+    });
+  };
   return (
     <div>
       <div className={styles["category-content"]}>
@@ -48,6 +61,9 @@ const MenuItem = (props) => {
                     </div>
                     <div className={styles["item-img"]}>
                       <img src={item.image_url} alt={item.title} />
+                      <div onClick={() => handleAddMenu(item._id)}>
+                        <AddCart className={styles.addCartButton} />
+                      </div>
                     </div>
                   </div>
                 ))

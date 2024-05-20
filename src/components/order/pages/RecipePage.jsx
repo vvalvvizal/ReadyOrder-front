@@ -1,9 +1,14 @@
 import React from "react";
 import "./RecipePage.css";
+import Header from "../../../shared/header/Header";
 const RecipePage = () => {
+  const viewHeader = "recipe-order";
   return (
-    <div className="content">
-      <h1>영수증</h1>
+    <div>
+      <Header viewHeader={viewHeader} />
+      <div className="content">
+        <p>영수증</p>
+      </div>
     </div>
   );
 };

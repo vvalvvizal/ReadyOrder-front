@@ -1,0 +1,89 @@
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* 헤더의 배경색 설정 */
+  z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
+  height: 100px;
+  padding: 7px 0px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shadow-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* 헤더의 배경색 설정 */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
+  height: 60px;
+  padding: 7px 0px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.orderheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* 헤더의 배경색 설정 */
+  z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
+  height: 100px;
+  padding: 7px 0px 8px 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header h2 {
+  color: #383838;
+  text-align: center;
+  font-family: "Hermeneus One";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.orderheader h2 {
+  color: #383838;
+  font-family: "Hermeneus One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+
+.shadow-header h2 {
+  color: #383838;
+  font-family: "Hermeneus One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+
+.table {
+  display: flex;
+  width: 74px;
+  height: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #eee;
+}
+.table p {
+  color: #1c1c1c;
+  text-align: center;
+  font-family: HeadlandOne;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 200% */
+}
