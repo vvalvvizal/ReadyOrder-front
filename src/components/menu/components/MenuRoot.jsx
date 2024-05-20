@@ -6,10 +6,11 @@ import { checkdItemsContext } from "../../store/components/ManagementMenuItem";
 const MenuRoot = (props) => {
   const [items, setItems] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
-
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/menus/6648141264fced5eebd93f27");
+      const response = await axios.get(
+        `/api/menus/${process.env.REACT_APP_USER_ID}`
+      );
       setItems(response.data);
     } catch (error) {
       console.error("Get Error", error);
@@ -27,11 +28,10 @@ const MenuRoot = (props) => {
       );
       console.log(itemsToDelete);
 
-      const accessToken = "";
       const deletePromises = itemsToDelete.map((id) =>
         axios.delete(`/api/menus/${id}`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
           },
         })
       );
@@ -45,21 +45,6 @@ const MenuRoot = (props) => {
     }
   };
 
-  const handleCreate = async (body) => {
-    const accessToken = "";
-    try {
-      await axios.post(`/api/menus/`, body, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("create ok");
-      fetchData();
-    } catch (error) {
-      console.log("Create Error", error);
-    }
-  };
   return (
     <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
       <div>
@@ -67,7 +52,6 @@ const MenuRoot = (props) => {
           items={items}
           userType={props.userType}
           handleDelete={handleDelete}
-          handleCreate={handleCreate}
         />
       </div>
     </checkdItemsContext.Provider>

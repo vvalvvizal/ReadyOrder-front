@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import styles from "./ManagementMenuItem.module.css"; // CSS 모듈 import
 import Checkbox from "./checkbox/CheckBox";
-// import { NavLink } from "react-router-dom";
 
 export const checkdItemsContext = createContext({
   checkedItems: {},
@@ -45,7 +44,6 @@ const ManagementMenuItem = (props) => {
         >
           <p>{categoryByItem.category}</p>
           {categoryByItem.items.map((item) => (
-            // <NavLink to="/item._id" className="store-button">
             <div className={styles["item-content"]} key={item._id}>
               <div className={styles["checkButton"]}>
                 <Checkbox
@@ -77,7 +75,6 @@ const ManagementMenuItem = (props) => {
                 </select>
               </div>
             </div>
-            // </NavLink>
           ))}
         </div>
       ))}
