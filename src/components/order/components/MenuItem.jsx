@@ -49,7 +49,7 @@ const MenuItem = (props) => {
               .filter((nowCategory) => nowCategory.category === activeCategory)
               .map((nowCategory) =>
                 nowCategory.items.map((item) => (
-                  <div className={styles["item-content"]} key={item.id}>
+                  <div className={styles["item-content"]} key={item._id}>
                     <div className={styles["item-textbox"]}>
                       <div className={styles["item-title"]}>{item.title}</div>
                       <div className={styles["item-tag-box"]}>
