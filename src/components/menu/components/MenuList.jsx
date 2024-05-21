@@ -31,7 +31,6 @@ const MenuList = (props) => {
       <div className="top-content">
         <div className={style["category-select"]}>
           <Category onCategoryChange={handleCategoryChange} />
-          {/* {console.log(category)} */}
         </div>
         <div className="delete-button" onClick={props.handleDelete}>
           <p>선택 삭제</p>

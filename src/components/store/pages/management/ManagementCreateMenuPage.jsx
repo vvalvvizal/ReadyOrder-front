@@ -4,7 +4,8 @@ import Category from "../../components/category/CategoryRoot";
 import { Form, Uploader } from "rsuite";
 import CameraRetroIcon from "@rsuite/icons/legacy/CameraRetro";
 import Header from "../../../../shared/header/Header";
-const ManagementCreateMenuPage = ({ onSave }) => {
+const ManagementCreateMenuPage = (props) => {
+  const { onSave, initialCategory } = props;
   const [category, setCategory] = useState("");
   const [menuName, setMenuName] = useState("");
   const [price, setPrice] = useState("");
@@ -18,7 +19,7 @@ const ManagementCreateMenuPage = ({ onSave }) => {
       image_url: "https://picsum.photos/200",
       tag: description,
       creator: process.env.REACT_APP_USER_ID,
-      category: category,
+      category: initialCategory ? initialCategory : category,
       available: true,
     };
 
@@ -39,7 +40,10 @@ const ManagementCreateMenuPage = ({ onSave }) => {
         <Form>
           <div className={styles.inputContent}>
             <div className={styles["category"]}>
-              <Category onCategoryChange={handleCategoryChange} />
+              <Category
+                onCategoryChange={handleCategoryChange}
+                initialCategory={initialCategory}
+              />
             </div>
 
             <input
