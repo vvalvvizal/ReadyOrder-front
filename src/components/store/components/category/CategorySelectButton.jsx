@@ -14,7 +14,7 @@ const SelectButton = (props) => {
   if (!props.categories || props.categories.length === 0) {
     return (
       <div>
-        <p>No Category found</p>
+        <Select />
       </div>
     );
   }
@@ -31,6 +31,11 @@ const SelectButton = (props) => {
     }
     //console.log("선택된 옵션:", selectedOption.value);
   };
+  const findInitialOption = (initialCategory) => {
+    return (
+      options.find((option) => option.value === initialCategory) || options[0]
+    );
+  };
 
   // 0: {label: '간식 food', value: '간식 food'}
   // 1: {label: 'main food', value: 'main food'}
@@ -39,7 +44,7 @@ const SelectButton = (props) => {
   return (
     <Select
       closeMenuOnSelect={false}
-      defaultValue={options[0]} // 첫 번째 항목을 기본값으로 설정
+      defaultValue={findInitialOption(props.initialCategory)} // 첫 번째 항목을 기본값으로 설정
       options={options}
       styles={customStyles}
       onChange={handleChange}

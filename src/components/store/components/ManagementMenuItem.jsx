@@ -39,8 +39,30 @@ const ManagementMenuItem = (props) => {
     // itemId에 해당하는 아이템의 옵션을 업데이트합니다.
     setOptionItems((prevOptionItems) => ({
       ...prevOptionItems,
-      [itemId]: value,
+      [itemId]: value, //지금 변경된 아이템 아이디 값만 수정
     }));
+
+    updateItemAvailability(itemId, value === "판매중"); //선택된 value가 "판매중"이면 true, 아니면 false
+  };
+
+  const updateItemAvailability = async (itemId, available) => {
+    try {
+      const response = await fetch(`/api/menus/${itemId}/available`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+        },
+        body: JSON.stringify({ available }), // Stringify the body
+      });
+      if (!response.ok) {
+        throw new Error("put error");
+      }
+      const data = await response.json();
+      console.log("아이템 업데이트 성공:", data);
+    } catch (error) {
+      console.error("아이템 업데이트 실패:", error);
+    }
   };
 
   useEffect(() => {
@@ -97,7 +119,10 @@ const ManagementMenuItem = (props) => {
                 </div>
                 <div className={styles["soldButton"]}>
                   <select
-                    value={optionItems[item._id] || "판매중"}
+                    value={
+                      optionItems[item._id] ||
+                      (item.available === true ? "판매중" : "일시품절")
+                    }
                     onChange={(event) => handleOptionChange(event, item._id)}
                   >
                     <option value="판매중">판매중</option>
@@ -108,7 +133,13 @@ const ManagementMenuItem = (props) => {
             ))}
           </div>
 
-          <NavLink to="/store/menu/create" style={{ textDecoration: "none" }}>
+          <NavLink
+            to={{
+              pathname: "/store/menu/create",
+              state: { category: categoryByItem.category },
+            }}
+            style={{ textDecoration: "none" }}
+          >
             <div className={styles.addMenu} onClick={handleCreate}>
               <MenuAddPlus />
               <p>메뉴 추가</p>

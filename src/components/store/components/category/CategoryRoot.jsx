@@ -2,7 +2,7 @@ import react, { useState, useEffect } from "react";
 import axios from "axios";
 import SelectButton from "./CategorySelectButton";
 
-const CategoryRoot = ({ onCategoryChange }) => {
+const CategoryRoot = ({ onCategoryChange, initialCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,11 @@ const CategoryRoot = ({ onCategoryChange }) => {
     console.log(categories);
   }, [categories]);
   return (
-    <SelectButton categories={categories} onCategoryChange={onCategoryChange} />
+    <SelectButton
+      categories={categories}
+      onCategoryChange={onCategoryChange}
+      initialCategory={initialCategory}
+    />
   );
 };
 export default CategoryRoot;
