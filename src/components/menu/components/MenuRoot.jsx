@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
+import Modal from "../../../shared/modal/Modal";
+
 import { checkdItemsContext } from "../../store/components/ManagementMenuItem";
 
 const MenuRoot = (props) => {
   const [items, setItems] = useState([]);
   const [checkedItems, setCheckedItems] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const viewModal = "failModal";
+  const handleShow = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -42,11 +54,17 @@ const MenuRoot = (props) => {
       fetchData();
     } catch (error) {
       console.error("Delete Error", error);
+      handleShow();
     }
   };
 
   return (
     <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
+      <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
+        <div className="OrderModal">
+          <p style={{ fontSize: "20px" }}>실패! 다시 시도해주세요</p>
+        </div>
+      </Modal>
       <div>
         <MenuList
           items={items}

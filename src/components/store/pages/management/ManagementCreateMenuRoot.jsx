@@ -9,7 +9,7 @@ const ManagementCreateMenuRoot = () => {
   const location = useLocation();
   const { category } = location.state || {}; // 전달된 category 값 받기
   const [showModal, setShowModal] = useState(false);
-
+  const viewModal = "failModal";
   const handleShow = () => {
     setShowModal(true);
   };
@@ -36,9 +36,9 @@ const ManagementCreateMenuRoot = () => {
   };
   return (
     <div>
-      <Modal show={showModal} onClose={handleClose}>
+      <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
         <div className="OrderModal">
-          <p>등록 실패</p>
+          <p style={{ fontSize: "20px" }}>실패! 다시 시도해주세요</p>
         </div>
       </Modal>
       <ManagementCreateMenuPage
