@@ -5,7 +5,10 @@ import style from "./MenuList.css";
 import Category from "../../store/components/category/CategoryRoot";
 import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
 import { NavLink } from "react-router-dom";
+import Divider from "../../../shared/Divider/Divider";
+
 const MenuList = (props) => {
+  const [category, setCategory] = useState("");
   const { categories, menus } = props.items;
   // console.log(categories);
   if (!menus || menus.length === 0) {
@@ -16,6 +19,10 @@ const MenuList = (props) => {
     );
   }
 
+  const handleCategoryChange = (selectedCategory) => {
+    setCategory(selectedCategory);
+  };
+
   const menuProps = props.userType;
   console.log(menuProps);
 
@@ -23,13 +30,19 @@ const MenuList = (props) => {
     <div className={style["menu_list"]}>
       <div className="top-content">
         <div className={style["category-select"]}>
-          <Category />
+          <Category onCategoryChange={handleCategoryChange} />
+          {/* {console.log(category)} */}
         </div>
         <div className="delete-button" onClick={props.handleDelete}>
           <p>선택 삭제</p>
         </div>
       </div>
-      <ManagementMenuItem items={menus} />
+      <Divider />
+      <ManagementMenuItem
+        items={menus}
+        selectedCategory={category}
+        handleCreate={props.handleCreate}
+      />
       <NavLink to="/store/menu/create" style={{ textDecoration: "none" }}>
         <div className="addMenu" onClick={props.handleCreate}>
           <MenuAddPlus />
