@@ -26,10 +26,10 @@ const Foot = (props) => {
         </div>
       );
       break;
-    case "sum_cost":
+    case "recipe_order":
       content = (
         <div className="order-view">
-          <p>총 금액 :</p>
+          <p>총 결제 금액 :</p>
         </div>
       );
       break;

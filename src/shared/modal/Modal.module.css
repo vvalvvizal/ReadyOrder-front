@@ -1,4 +1,4 @@
-Modal.module.css .overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,13 +17,32 @@ Modal.module.css .overlay {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.2s ease-out;
   width: 319px;
   height: 469px;
   flex-shrink: 0;
-  border-radius: 23px;
   border: 1px solid #e0dede;
   background: #fff;
 }
+
+.failModal {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-out;
+  width: 200px;
+  height: 80px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .closeButton {
   position: absolute;
   top: 10px;
@@ -37,4 +56,19 @@ Modal.module.css .overlay {
 
 .content {
   margin-top: 20px;
+  font-family: "Arial, sans-serif";
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -30%);
+  }
 }
