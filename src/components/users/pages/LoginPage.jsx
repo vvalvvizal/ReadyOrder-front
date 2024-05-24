@@ -1,7 +1,9 @@
-import React, { useReducer, useCallback } from "react";
+import React, { useReducer, useCallback, useState } from "react";
 import axios from "axios";
 import styles from "./LoginPage.module.css";
 import Header from "../../../shared/header/Header";
+import { useHistory } from "react-router-dom";
+import Modal from "../../../shared/modal/Modal";
 
 const formReducer = (state, action) => {
   //전반적인 입력 관리 useReducer의 리듀서함수
@@ -24,9 +26,20 @@ const formReducer = (state, action) => {
   }
 };
 
-const LoginPage = () => {
+const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
   const viewHeader = "login";
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+  const viewModal = "failModal";
+  const [failMessage, setFailMessage] = useState("실패! 다시 시도해주세요");
 
+  const handleShow = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
   const [formState, dispatch] = useReducer(formReducer, {
     inputs: {
       email: { value: "", isValid: false },
@@ -52,7 +65,8 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (!formState.isValid) {
-      console.log("이메일 혹은 비밀번호를 입력해주세요.");
+      setFailMessage("빈칸을 입력하세요");
+      handleShow();
       return;
     }
 
@@ -70,18 +84,30 @@ const LoginPage = () => {
 
       if (response.status === 200) {
         console.log("Login successful", response.data);
-        // 로그인 성공 처리 (예: 리다이렉트)
+        isLoggedInHandler();
+        history.push("/main");
+        // console.log(isLoggedIn);
+        // 로그인 성공 처리
       } else {
         console.error("Login failed", response.data);
+        setFailMessage("로그인 실패");
+        handleShow();
         // 로그인 실패 처리 (예: 오류 메시지 표시)
       }
     } catch (err) {
       console.error("Login error", err);
+      setFailMessage("네트워크 에러");
+      handleShow();
       // 네트워크 오류 처리
     }
   };
   return (
     <div>
+      <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
+        <div className="OrderModal">
+          <p style={{ fontSize: "20px" }}>{failMessage}</p>
+        </div>
+      </Modal>
       <Header viewHeader={viewHeader} />
       <div className={styles.content}>
         <h1>안녕하세요, 사장님</h1>

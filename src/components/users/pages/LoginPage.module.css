@@ -59,7 +59,13 @@
   border-width: 0px;
   border-radius: 16px;
   background-color: #f39800;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 호버 효과의 전환 효과 추가 */
 }
+.button-div:hover {
+  background-color: #ffae42; /* 호버 시 배경색 변경 */
+}
+
 .button-div p {
   color: var(--Others-White, #fff);
   text-align: center;
