@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import MenuPage from "./components/order/pages/MenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
@@ -20,7 +21,7 @@ import "./App.css";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
@@ -29,6 +30,9 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  const isLoggedInHandler = () => {
+    setIsLoggedIn(true);
+  };
   return (
     <Router>
       <Switch>
@@ -43,7 +47,10 @@ function App() {
         </Route>
 
         <Route path="/login" exact>
-          <LoginPage />
+          <LoginPage
+            isLoggedIn={isLoggedIn}
+            isLoggedInHandler={isLoggedInHandler}
+          />
         </Route>
         <Route path="/main">
           <ManagementPage />
