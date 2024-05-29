@@ -17,6 +17,9 @@ import ManagementStatePage from "./components/store/pages/management/ManagementS
 import RecipePage from "./components/order/pages/RecipePage.jsx";
 import Header from "./shared/header/Header.jsx";
 import ManagementCreateMenuRoot from "./components/store/pages/management/ManagementCreateMenuRoot.jsx";
+import MenuDetailPage from "./components/order/pages/MenuDetailPage.jsx";
+import { CartProvider } from "./components/order/components/CartContext.js";
+
 import "./App.css";
 
 function App() {
@@ -34,52 +37,58 @@ function App() {
     setIsLoggedIn(true);
   };
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact>
-          {showIntro ? (
+    <CartProvider>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <MenuPage />
+            {/* {showIntro ? (
             <IntroPage />
           ) : isLoggedIn ? (
             <Redirect to="/main" />
           ) : (
             <Redirect to="/login" />
-          )}
-        </Route>
+          )} */}
+          </Route>
 
-        <Route path="/login" exact>
-          <LoginPage
-            isLoggedIn={isLoggedIn}
-            isLoggedInHandler={isLoggedInHandler}
-          />
-        </Route>
-        <Route path="/main">
-          <ManagementPage />
-        </Route>
-        <Route path="/store/state" exact>
-          <ManagementStatePage />
-        </Route>
-        <Route path="/store/menu" exact>
-          <ManagementMenuPage />
-        </Route>
-        <Route path="/store/menu/create" exact>
-          <ManagementCreateMenuRoot />
-        </Route>
-        <Route path="/store/qr" exact>
-          <QRPage />
-        </Route>
+          <Route path="/login" exact>
+            <LoginPage
+              isLoggedIn={isLoggedIn}
+              isLoggedInHandler={isLoggedInHandler}
+            />
+          </Route>
+          <Route path="/main">
+            <ManagementPage />
+          </Route>
+          <Route path="/store/state" exact>
+            <ManagementStatePage />
+          </Route>
+          <Route path="/store/menu" exact>
+            <ManagementMenuPage />
+          </Route>
+          <Route path="/store/menu/create" exact>
+            <ManagementCreateMenuRoot />
+          </Route>
+          <Route path="/store/qr" exact>
+            <QRPage />
+          </Route>
+          <Route path="/order/menu" exact>
+            <MenuPage />
+          </Route>
+          <Route path="/order/menu/:id" exact>
+            <MenuDetailPage />
+          </Route>
+          <Route path="/order/recipe" exact>
+            <RecipePage />
+          </Route>
+          <Route path="/order/cart" exact>
+            <CartPage />
+          </Route>
 
-        <Route path="/order/menu" exact>
-          <MenuPage />
-        </Route>
-        <Route path="/order/recipe" exact>
-          <RecipePage />
-        </Route>
-        <Route path="/order/cart" exact>
-          <CartPage />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    </Router>
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+    </CartProvider>
   );
 }
 

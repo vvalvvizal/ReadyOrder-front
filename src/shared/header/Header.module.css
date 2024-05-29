@@ -24,6 +24,20 @@
   justify-content: center;
   align-items: center;
 }
+.menu-detail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  height: 50px;
+  padding: 7px 0px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 .orderheader {
   position: fixed;
   top: 0;

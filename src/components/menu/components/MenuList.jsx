@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuItem from "../../order/components/MenuItem";
 import ManagementMenuItem from "../../store/components/ManagementMenuItem";
 import style from "./MenuList.css";
@@ -8,6 +8,11 @@ import { NavLink } from "react-router-dom";
 import Divider from "../../../shared/Divider/Divider";
 
 const MenuList = (props) => {
+  const menuProps = props.userType;
+  useEffect(() => {
+    console.log(menuProps);
+  }, [menuProps]);
+
   const [category, setCategory] = useState("");
   const { categories, menus } = props.items;
   // console.log(categories);
@@ -22,9 +27,6 @@ const MenuList = (props) => {
   const handleCategoryChange = (selectedCategory) => {
     setCategory(selectedCategory);
   };
-
-  const menuProps = props.userType;
-  console.log(menuProps);
 
   return menuProps === "admin" ? (
     <div className={style["menu_list"]}>
