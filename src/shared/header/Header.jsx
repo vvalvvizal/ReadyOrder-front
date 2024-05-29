@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { ReactComponent as Bell } from "../header/icon/bell.svg";
+import { ReactComponent as Back } from "../header/icon/back.svg";
 
 const Header = (props) => {
   let content;
@@ -18,6 +20,7 @@ const Header = (props) => {
     case "push_order":
       content = (
         <div className={styles["shadow-header"]}>
+          <Back />
           <h2>장바구니</h2>
         </div>
       );
@@ -25,6 +28,7 @@ const Header = (props) => {
     case "management-menu":
       content = (
         <div className={styles["shadow-header"]}>
+          <Back />
           <h2>Mornin'Gun</h2>
         </div>
       );
@@ -32,6 +36,7 @@ const Header = (props) => {
     case "create-menu":
       content = (
         <div className={styles["shadow-header"]}>
+          <Back />
           <h2>Mornin'Gun</h2>
         </div>
       );
@@ -45,6 +50,14 @@ const Header = (props) => {
         </div>
       );
       break;
+    case "menu-detail":
+      content = (
+        <div className={styles["menu-detail"]}>
+          <Bell />
+        </div>
+      );
+      break;
+
     default:
       content = <div className={styles.header}></div>;
       break;
