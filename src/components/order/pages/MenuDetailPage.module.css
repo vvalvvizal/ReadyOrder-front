@@ -71,6 +71,7 @@
   text-transform: capitalize;
 }
 .item-add {
+  cursor: pointer;
   width: 224px;
   height: 46px;
   flex-shrink: 0;
@@ -92,4 +93,7 @@
   width: 152px;
   height: 30px;
   flex-shrink: 0;
+}
+.changeNum {
+  cursor: pointer;
 }

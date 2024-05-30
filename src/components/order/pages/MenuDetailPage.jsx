@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom"; // useLocation 훅을 임포트�
 import { ReactComponent as Plus } from "../util/icon/plus.svg";
 import { ReactComponent as Minus } from "../util/icon/minus.svg";
 import { CartContext } from "../components/CartContext";
+import { useHistory } from "react-router-dom";
 
 import styles from "./MenuDetailPage.module.css";
 
@@ -13,6 +14,7 @@ const MenuDetailPage = () => {
   const location = useLocation();
   const [item, setItem] = useState(null);
   const { handleAddMenu } = useContext(CartContext);
+  const history = useHistory();
 
   const viewHeader = "menu-detail";
   const viewFooter = "view_cart";
@@ -26,6 +28,11 @@ const MenuDetailPage = () => {
 
   const increaseNum = () => setNum(num + 1);
   const decreaseNum = () => num > 1 && setNum(num - 1);
+
+  const handleAddToCart = () => {
+    handleAddMenu(item._id, item.title, item.image_url, item.price, num);
+    history.goBack(); // 주문 담기 후 이전 페이지로 이동
+  };
 
   return (
     <div>
@@ -47,14 +54,11 @@ const MenuDetailPage = () => {
               </div>
               <div className={styles["item-button"]}>
                 <div className={styles["item-button-num"]}>
-                  <Minus onClick={decreaseNum} />
+                  <Minus className={styles.changeNum} onClick={decreaseNum} />
                   <p>{num}</p>
-                  <Plus onClick={increaseNum} />
+                  <Plus className={styles.changeNum} onClick={increaseNum} />
                 </div>
-                <div
-                  className={styles["item-add"]}
-                  onClick={() => handleAddMenu(item._id, num)}
-                >
+                <div className={styles["item-add"]} onClick={handleAddToCart}>
                   <p>주문 담기</p>
                 </div>
               </div>
