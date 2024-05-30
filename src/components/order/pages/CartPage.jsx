@@ -16,7 +16,14 @@ const CartPage = () => {
   const viewFooter = "push_order";
   const [showModal, setShowModal] = useState(false);
 
-  const { cart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
+  const {
+    cart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeItem,
+    totalQuantity,
+    totalPrice,
+  } = useContext(CartContext);
 
   const handleShow = () => {
     setShowModal(true);
@@ -30,7 +37,7 @@ const CartPage = () => {
     return Object.keys(cart).map((itemId) => {
       const { title, image_url, price, quantity } = cart[itemId];
       return (
-        <div>
+        <div className={styles["item-content"]}>
           <div key={itemId} className={styles["cart-item"]}>
             <img
               src={image_url}
@@ -43,13 +50,17 @@ const CartPage = () => {
             </div>
             <div className={styles["item-button"]}>
               <div className={styles["item-button-back"]}>
-                <Back />
+                <Back
+                  className={styles.changeNum}
+                  onClick={(e) => {
+                    removeItem(itemId);
+                  }}
+                />
               </div>
               <div className={styles["item-button-num"]}>
                 <Minus
                   className={styles.changeNum}
                   onClick={(e) => {
-                    console.log("삭제");
                     decreaseQuantity(itemId);
                   }}
                 />
@@ -57,7 +68,6 @@ const CartPage = () => {
                 <Plus
                   className={styles.changeNum}
                   onClick={(e) => {
-                    console.log("증가");
                     increaseQuantity(itemId);
                   }}
                 />
@@ -79,6 +89,20 @@ const CartPage = () => {
         <Modal show={showModal} onClose={handleClose}>
           <div className={styles.OrderModal}>
             <p>주문 완료</p>
+            <div className={styles.ModalText}>
+              <div className={styles.ModalItem}>
+                <div className={styles["ModalText-title"]}>테이블</div>
+                <p>1번</p>
+              </div>
+              <div className={styles.ModalItem}>
+                <div className={styles["ModalText-title"]}>주문 메뉴</div>
+                <p>{totalQuantity}개</p>
+              </div>
+              <div className={styles.ModalItem}>
+                <div className={styles["ModalText-title"]}>주문 금액</div>
+                <p>{totalPrice}원</p>
+              </div>
+            </div>
             <div className={styles.ButtonContainer}>
               <button className={styles.orderButton}>
                 <p>메뉴 추가하기</p>

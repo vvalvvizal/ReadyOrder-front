@@ -20,7 +20,9 @@ const Header = (props) => {
     case "push-order":
       content = (
         <div className={styles["shadow-header"]}>
-          <Back />
+          <div className={styles["back"]}>
+            <Back />
+          </div>
           <h2>장바구니</h2>
         </div>
       );
@@ -28,7 +30,9 @@ const Header = (props) => {
     case "management-menu":
       content = (
         <div className={styles["shadow-header"]}>
-          <Back />
+          <div className={styles["back"]}>
+            <Back />
+          </div>
           <h2>Mornin'Gun</h2>
         </div>
       );
@@ -36,7 +40,9 @@ const Header = (props) => {
     case "create-menu":
       content = (
         <div className={styles["shadow-header"]}>
-          <Back />
+          <div className={styles["back"]}>
+            <Back />
+          </div>
           <h2>Mornin'Gun</h2>
         </div>
       );
