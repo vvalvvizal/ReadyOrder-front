@@ -73,21 +73,18 @@ const CartPage = () => {
   return (
     <div>
       <Header viewHeader={viewHeader} />
-      <div className="order-header">
-        <h2>장바구니</h2>
-      </div>
 
-      <div className="content">
+      <div className={styles.content}>
         {renderCartItems()}
         <Modal show={showModal} onClose={handleClose}>
-          <div className="OrderModal">
+          <div className={styles.OrderModal}>
             <p>주문 완료</p>
-            <div className="ButtonContainer">
-              <button className="orderButton">
+            <div className={styles.ButtonContainer}>
+              <button className={styles.orderButton}>
                 <p>메뉴 추가하기</p>
               </button>
               <NavLink to="/order/recipe" style={{ textDecoration: "none" }}>
-                <button className="recipeButton">
+                <button className={styles.recipeButton}>
                   <p>주문 내역 확인</p>
                 </button>
               </NavLink>
