@@ -17,7 +17,7 @@ const Header = (props) => {
         </div>
       );
       break;
-    case "push_order":
+    case "push-order":
       content = (
         <div className={styles["shadow-header"]}>
           <Back />
