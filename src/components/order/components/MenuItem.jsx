@@ -45,30 +45,32 @@ const MenuItem = (props) => {
               nowCategory.items
                 .filter((item) => item.available)
                 .map((item) => (
-                  <NavLink
-                    className={styles["item-content"]}
-                    to={{
-                      pathname: `/order/menu/${item._id}`,
-                      state: { item },
-                    }}
-                    key={item._id}
-                  >
-                    <div className={styles["item-textbox"]}>
-                      <div className={styles["item-title"]}>{item.title}</div>
-                      <div className={styles["item-tag-box"]}>
-                        <p>{item.tag}</p>
+                  <>
+                    <NavLink
+                      className={styles["item-content"]}
+                      to={{
+                        pathname: `/order/menu/${item._id}`,
+                        state: { item },
+                      }}
+                      key={item._id}
+                    >
+                      <div className={styles["item-textbox"]}>
+                        <div className={styles["item-title"]}>{item.title}</div>
+                        <div className={styles["item-tag-box"]}>
+                          <p>{item.tag}</p>
+                        </div>
+                        <div className={styles["item-price"]}>
+                          <p>{item.price}₩</p>
+                        </div>
                       </div>
-                      <div className={styles["item-price"]}>
-                        <p>{item.price}₩</p>
+                      <div className={styles["item-img"]}>
+                        <img src={item.image_url} alt={item.title} />
                       </div>
+                    </NavLink>
+                    <div onClick={() => handleAddMenu(item._id)}>
+                      <AddCart className={styles.addCartButton} />
                     </div>
-                    <div className={styles["item-img"]}>
-                      <img src={item.image_url} alt={item.title} />
-                      <div onClick={() => handleAddMenu(item._id)}>
-                        <AddCart className={styles.addCartButton} />
-                      </div>
-                    </div>
-                  </NavLink>
+                  </>
                 ))
             )}
         </>
