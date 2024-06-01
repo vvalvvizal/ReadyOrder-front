@@ -56,8 +56,9 @@ const MenuDetailPage = () => {
           {item ? (
             <div>
               <div className={styles["item-info"]}>
-                <img src={item.image_url} alt={item.title} />
-
+                <div className={styles["item-img"]}>
+                  <img src={item.image_url} alt={item.title} />
+                </div>
                 <div className={styles["item-info-text"]}>
                   <h2>{item.title}</h2>
                   <p>{item.price}₩</p>
