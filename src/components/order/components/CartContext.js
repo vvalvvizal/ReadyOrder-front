@@ -53,6 +53,10 @@ export const CartProvider = ({ children }) => {
       return updatedCart;
     });
   };
+
+  const resetItem = () => {
+    setCart({});
+  };
   const calculateTotal = (cart) => {
     let totalQuantity = 0;
     let totalPrice = 0;
@@ -79,6 +83,7 @@ export const CartProvider = ({ children }) => {
         removeItem,
         totalQuantity,
         totalPrice,
+        resetItem,
       }}
     >
       {children}

@@ -37,10 +37,6 @@ const SelectButton = (props) => {
     );
   };
 
-  // 0: {label: '간식 food', value: '간식 food'}
-  // 1: {label: 'main food', value: 'main food'}
-  // 2: {label: 'side food', value: 'side food'
-
   return (
     <Select
       closeMenuOnSelect={false}

@@ -112,3 +112,21 @@
 .changeNum {
   cursor: pointer;
 }
+
+.OrderModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.OrderModal p {
+  flex-shrink: 0;
+  color: #383838;
+  text-align: center;
+  font-family: "Hermeneus One";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

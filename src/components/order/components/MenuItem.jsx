@@ -1,14 +1,13 @@
 import React, { useState, useContext } from "react";
 import styles from "./MenuItem.module.css"; // CSS 모듈 import
 import { ReactComponent as AddCart } from "../util/icon/AddCart.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { CartContext } from "./CartContext";
 
 const MenuItem = (props) => {
-  // props.items 객체를 배열로 변환합니다.
+  // const { handleAddMenu } = useContext(CartContext);
 
-  const { handleAddMenu } = useContext(CartContext);
-
+  const { tableNum } = useParams();
   const categoryArray = Object.entries(props.items).map(
     ([category, items]) => ({
       category,
@@ -49,7 +48,7 @@ const MenuItem = (props) => {
                     <NavLink
                       className={styles["item-content"]}
                       to={{
-                        pathname: `/order/menu/${item._id}`,
+                        pathname: `/order/menu/${tableNum}/${item._id}`,
                         state: { item },
                       }}
                       key={item._id}
@@ -67,9 +66,9 @@ const MenuItem = (props) => {
                         <img src={item.image_url} alt={item.title} />
                       </div>
                     </NavLink>
-                    <div onClick={() => handleAddMenu(item._id)}>
+                    {/* <div onClick={() => handleAddMenu(item._id)}>
                       <AddCart className={styles.addCartButton} />
-                    </div>
+                    </div> */}
                   </>
                 ))
             )}
