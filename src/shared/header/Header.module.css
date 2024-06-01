@@ -21,7 +21,7 @@
   height: 60px;
   padding: 7px 0px 8px 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .menu-detail {
@@ -48,9 +48,23 @@
   height: 100px;
   padding: 7px 0px 8px 0px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+}
+.billheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* 헤더의 배경색 설정 */
+  z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
+  height: 100px;
+  padding: 7px 0px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 .back {
   margin: 0;
@@ -81,9 +95,15 @@
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 100% */
-  margin: 0 auto;
 }
-
+.billheader h2 {
+  color: #383838;
+  font-family: "Hermeneus One";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
 .table {
   display: flex;
   width: 74px;

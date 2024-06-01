@@ -1,10 +1,15 @@
 import { ReactComponent as Cart } from "./util/cart.svg";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Footer.css";
 
 const Foot = (props) => {
   let content;
-
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    if (props.total) {
+      setTotal(props.total);
+    }
+  }, [props.total]);
   switch (props.viewFooter) {
     case "view_cart":
       content = (
@@ -29,7 +34,7 @@ const Foot = (props) => {
     case "recipe_order":
       content = (
         <div className="order-view">
-          <p>총 결제 금액 :</p>
+          <p>총 결제 금액 : {total}</p>
         </div>
       );
       break;

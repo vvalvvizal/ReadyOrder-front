@@ -1,18 +1,19 @@
 import React from "react";
 import styles from "./Header.module.css";
+import { useParams } from "react-router-dom";
 import { ReactComponent as Bell } from "../header/icon/bell.svg";
 import { ReactComponent as Back } from "../header/icon/back.svg";
 
 const Header = (props) => {
+  let { tableNum } = useParams();
   let content;
-  const tablenum = 3;
   switch (props.viewHeader) {
     case "order":
       content = (
         <div className={styles.orderheader}>
           <h2>Mornin'Gun</h2>
           <div className={styles.table}>
-            <p>{tablenum}번 테이블</p>
+            <p>{tableNum}번 테이블</p>
           </div>
         </div>
       );
@@ -49,10 +50,11 @@ const Header = (props) => {
       break;
     case "recipe-order":
       content = (
-        <div className={styles["shadow-header"]}>
-          <div className={styles.order}>
-            <h2>주문내역</h2>
+        <div className={styles.billheader}>
+          <div className={styles["back"]}>
+            <Back />
           </div>
+          <h2>주문내역</h2>
         </div>
       );
       break;

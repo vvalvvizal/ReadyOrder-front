@@ -4,7 +4,6 @@ import {
   Route,
   Redirect,
   Switch,
-  useHistory,
 } from "react-router-dom";
 import MenuPage from "./components/order/pages/MenuPage.jsx";
 import IntroPage from "./components/intro/IntroPage.jsx";
@@ -14,7 +13,7 @@ import ManagementPage from "./components/store/pages/management/ManagementPage.j
 import ManagementMenuPage from "./components/store/pages/management/ManagementMenuPage.jsx";
 import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
-import RecipePage from "./components/order/pages/RecipePage.jsx";
+import BillPage from "./components/order/pages/BillPage.jsx";
 import Header from "./shared/header/Header.jsx";
 import ManagementCreateMenuRoot from "./components/store/pages/management/ManagementCreateMenuRoot.jsx";
 import MenuDetailPage from "./components/order/pages/MenuDetailPage.jsx";
@@ -41,14 +40,13 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <MenuPage />
-            {/* {showIntro ? (
-            <IntroPage />
-          ) : isLoggedIn ? (
-            <Redirect to="/main" />
-          ) : (
-            <Redirect to="/login" />
-          )} */}
+            {showIntro ? (
+              <IntroPage />
+            ) : isLoggedIn ? (
+              <Redirect to="/main" />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
 
           <Route path="/login" exact>
@@ -72,16 +70,20 @@ function App() {
           <Route path="/store/qr" exact>
             <QRPage />
           </Route>
-          <Route path="/order/menu" exact>
+          {/* <Route path="/order/menu" exact>
+            <MenuPage />
+          </Route> */}
+          <Route path="/order/menu/:tableNum" exact>
             <MenuPage />
           </Route>
-          <Route path="/order/menu/:id" exact>
+          <Route path="/order/menu/:tableNum/:id" exact>
             <MenuDetailPage />
           </Route>
-          <Route path="/order/recipe" exact>
-            <RecipePage />
+
+          <Route path="/orders/:tableNum/bill" exact>
+            <BillPage />
           </Route>
-          <Route path="/order/cart" exact>
+          <Route path="/order/cart/:tableNum" exact>
             <CartPage />
           </Route>
 

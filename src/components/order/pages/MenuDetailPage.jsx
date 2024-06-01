@@ -4,8 +4,11 @@ import Footer from "../../../shared/footer/Footer";
 import { useLocation } from "react-router-dom"; // useLocation 훅을 임포트합니다
 import { ReactComponent as Plus } from "../util/icon/plus.svg";
 import { ReactComponent as Minus } from "../util/icon/minus.svg";
+import { ReactComponent as Success } from "../util/icon/success.svg";
 import { CartContext } from "../components/CartContext";
+import { ThreeDotsWave } from "../../menu/util/ReactLoading";
 import { useHistory } from "react-router-dom";
+import Modal from "../../../shared/modal/Modal";
 
 import styles from "./MenuDetailPage.module.css";
 
@@ -15,9 +18,10 @@ const MenuDetailPage = () => {
   const [item, setItem] = useState(null);
   const { handleAddMenu } = useContext(CartContext);
   const history = useHistory();
-
+  const [showModal, setShowModal] = useState(false);
   const viewHeader = "menu-detail";
   const viewFooter = "view_cart";
+  const viewModal = "successOrder";
 
   useEffect(() => {
     const state = location.state;
@@ -31,9 +35,19 @@ const MenuDetailPage = () => {
 
   const handleAddToCart = () => {
     handleAddMenu(item._id, item.title, item.image_url, item.price, num);
-    history.goBack(); // 주문 담기 후 이전 페이지로 이동
+    handleShow();
+    setTimeout(() => {
+      history.goBack();
+    }, 400);
   };
 
+  const handleShow = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
   return (
     <div>
       <Header viewHeader={viewHeader} />
@@ -64,9 +78,14 @@ const MenuDetailPage = () => {
               </div>
             </div>
           ) : (
-            <div>Loading...</div>
+            <ThreeDotsWave />
           )}
         </div>
+        <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
+          <div className={styles.OrderModal}>
+            <Success />
+          </div>
+        </Modal>
       </div>
       <Footer viewFooter={viewFooter} />
     </div>
