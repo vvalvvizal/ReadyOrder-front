@@ -6,7 +6,7 @@ import { NavLink, useParams } from "react-router-dom";
 import styles from "./MenuPage.module.css";
 
 const MenuPage = () => {
-  const { tableNum } = useParams();
+  const { uid, tableNum } = useParams();
   const viewFooter = "view_cart";
   const viewHeader = "order";
   return (
@@ -15,7 +15,7 @@ const MenuPage = () => {
       <div className={styles.content}>
         <Menu userType={"customer"} />
       </div>
-      <NavLink to={`/order/cart/${tableNum}`}>
+      <NavLink to={`/${uid}/order/cart/${tableNum}`}>
         <Footer viewFooter={viewFooter} />
       </NavLink>
     </div>

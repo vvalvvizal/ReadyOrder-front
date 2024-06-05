@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./PosPage.module.css";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { ReactComponent as BackgroundSVG } from "./util/WoodBackground.svg";
 import { ReactComponent as Close } from "./util/Close.svg";
 import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
@@ -8,7 +7,6 @@ import { ReactComponent as Home } from "./util/Home.svg";
 
 const PosPage = () => {
   const Num = 6;
-  const { id } = useParams();
   const positions = [
     { x: -200, y: 0 },
     { x: 200, y: 50 },
@@ -17,6 +15,7 @@ const PosPage = () => {
     { x: -200, y: 300 },
     { x: 200, y: 330 },
   ];
+  const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
 
   const getTodayDate = () => {
     const today = new Date();
@@ -38,7 +37,7 @@ const PosPage = () => {
               <li>영업일자 : {todayDate}</li>
             </ul>
             <ul>
-              <li>포스번호 : {id}</li>
+              <li>포스 ID : {storedUserLoggedInData.userId}</li>
             </ul>
           </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import MenuList from "./MenuList";
 import Modal from "../../../shared/modal/Modal";
-
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { checkdItemsContext } from "../../store/components/ManagementMenuItem";
 
 const MenuRoot = (props) => {
@@ -10,6 +10,8 @@ const MenuRoot = (props) => {
   const [checkedItems, setCheckedItems] = useState({});
   const [showModal, setShowModal] = useState(false);
   const viewModal = "failModal";
+
+  const { uid } = useParams();
   const handleShow = () => {
     setShowModal(true);
   };
@@ -18,9 +20,16 @@ const MenuRoot = (props) => {
     setShowModal(false);
   };
 
-  const fetchData = async () => {
+  const AdminfetchData = async () => {
     try {
-    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+      const storedUserLoggedInData = JSON.parse(
+        localStorage.getItem("userData")
+      );
+
+      if (!storedUserLoggedInData || !storedUserLoggedInData.userId) {
+        console.error("User data not found or userId is null");
+        return;
+      }
 
       const response = await axios.get(
         `/api/menus/${storedUserLoggedInData.userId}`
@@ -31,9 +40,22 @@ const MenuRoot = (props) => {
     }
   };
 
+  const UserfetchData = async () => {
+    try {
+      const response = await axios.get(`/api/menus/${uid}`);
+      setItems(response.data);
+    } catch (error) {
+      console.error("Get Error", error);
+    }
+  };
+
   useEffect(() => {
-    fetchData();
-  }, []); // 빈 배열을 의존성 배열로 사용하여 컴포넌트가 처음 렌더링될 때만 fetchData 함수가 실행되도록 함
+    if (props.userType === "customer") {
+      UserfetchData();
+    } else if (props.userType === "admin") {
+      AdminfetchData();
+    }
+  }, [props.userType]);
 
   const handleDelete = async () => {
     try {
@@ -58,7 +80,8 @@ const MenuRoot = (props) => {
       console.log("delete ok");
 
       // 삭제 후 다시 데이터 가져오기
-      fetchData();
+      AdminfetchData();
+      UserfetchData();
     } catch (error) {
       console.error("Delete Error", error);
       handleShow();
@@ -69,7 +92,7 @@ const MenuRoot = (props) => {
     <checkdItemsContext.Provider value={{ checkedItems, setCheckedItems }}>
       <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
         <div className="OrderModal">
-          <p style={{ fontSize: "20px" }}>실패! 다시 시도해주세요</p>
+          <p style={{ fontSize: "18px" }}>실패! 다시 시도해주세요</p>
         </div>
       </Modal>
       <div>

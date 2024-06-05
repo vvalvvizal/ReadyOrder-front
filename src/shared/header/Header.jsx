@@ -8,14 +8,14 @@ import { ReactComponent as Bill } from "../header/icon/bill.svg";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
-  let { tableNum } = useParams();
+  let { uid, tableNum } = useParams();
   let history = useHistory();
 
   const handleBackClick = () => {
     history.goBack();
   };
   const handleHomeClick = () => {
-    history.push(`/order/menu/${tableNum}`);
+    history.push(`/${uid}/order/menu/${tableNum}`);
   };
   let content;
   switch (props.viewHeader) {
@@ -25,7 +25,7 @@ const Header = (props) => {
           <div className={styles["ordered-content"]}>
             <Bell />
             <NavLink
-              to={`/orders/${tableNum}/bill`}
+              to={`/${uid}/orders/${tableNum}/bill`}
               style={{ textDecoration: "none" }}
             >
               <div className={styles["ordered-box"]}>
@@ -93,7 +93,7 @@ const Header = (props) => {
           <div className={styles["ordered-content"]}>
             <Bell />
             <NavLink
-              to={`/orders/${tableNum}/bill`}
+              to={`/${uid}/orders/${tableNum}/bill`}
               style={{ textDecoration: "none" }}
             >
               <div className={styles["ordered-box"]}>
