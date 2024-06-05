@@ -262,3 +262,32 @@
 }
 .item-button-back {
 }
+.emptybox {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+.emptyText {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+@media only screen and (max-width: 768px) {
+  .emptybox {
+    margin-top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+  }
+}

@@ -25,7 +25,7 @@ const Header = (props) => {
           <div className={styles["ordered-content"]}>
             <Bell />
             <NavLink
-              to={`/${uid}/orders/${tableNum}/bill`}
+              to={`/${uid}/order/${tableNum}/bill`}
               style={{ textDecoration: "none" }}
             >
               <div className={styles["ordered-box"]}>
@@ -93,7 +93,7 @@ const Header = (props) => {
           <div className={styles["ordered-content"]}>
             <Bell />
             <NavLink
-              to={`/${uid}/orders/${tableNum}/bill`}
+              to={`/${uid}/order/${tableNum}/bill`}
               style={{ textDecoration: "none" }}
             >
               <div className={styles["ordered-box"]}>

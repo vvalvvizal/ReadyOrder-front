@@ -59,7 +59,7 @@ const MenuItem = (props) => {
                           <p>{item.tag}</p>
                         </div>
                         <div className={styles["item-price"]}>
-                          <p>{item.price}₩</p>
+                          <p>{item.price.toLocaleString()}₩</p>
                         </div>
                       </div>
                       <div className={styles["item-img"]}>

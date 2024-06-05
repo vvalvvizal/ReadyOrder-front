@@ -5,7 +5,7 @@ import style from "./MenuList.css";
 import Category from "../../store/components/category/CategoryRoot";
 import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
 import { NavLink } from "react-router-dom";
-import { ThreeDotsWave } from "../../menu/util/ReactLoading";
+import { ThreeDotsWave } from "../../../shared/loading/ReactLoading";
 import Divider from "../../../shared/Divider/Divider";
 
 const MenuList = (props) => {
@@ -19,8 +19,9 @@ const MenuList = (props) => {
   // console.log(categories);
   if (!menus || menus.length === 0) {
     return (
-      <div>
+      <div className="emptybox">
         <ThreeDotsWave />
+        <p className="emptyText">메뉴가 없습니다.</p>
       </div>
     );
   }
