@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Header from "../../../shared/header/Header";
 import Footer from "../../../shared/footer/Footer";
 import Modal from "../../../shared/modal/Modal";
-import { ThreeDotsWave } from "../../../shared/util/ReactLoading";
+import { ThreeDotsWave } from "../../../shared/loading/ReactLoading";
 import { CartContext } from "../components/CartContext";
 import { ReactComponent as Minus } from "../util/icon/minus.svg";
 import { ReactComponent as Plus } from "../util/icon/plus.svg";

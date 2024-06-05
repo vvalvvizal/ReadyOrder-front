@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ThreeDotsWave } from "../../../shared/util/ReactLoading";
+import { ThreeDotsWave } from "../../../shared/loading/ReactLoading";
 import Divider from "../../../shared/Divider/Divider";
 import { useParams } from "react-router-dom";
 
