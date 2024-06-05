@@ -20,8 +20,8 @@ const ManagementCreateMenuPage = (props) => {
       price: parseInt(price, 10),
       image_url: "https://picsum.photos/200",
       tag: description,
-      creator: storedUserLoggedInData.userId,
-      category: initialCategory ? initialCategory : category,
+      creator: process.env.REACT_APP_USER_ID,
+      category: category ? category : initialCategory,
       available: true,
     };
 
