@@ -13,12 +13,14 @@ const ManagementCreateMenuPage = (props) => {
   const [image, setImage] = useState(null);
 
   const handleSave = () => {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+
     const body = {
       title: menuName,
       price: parseInt(price, 10),
       image_url: "https://picsum.photos/200",
       tag: description,
-      creator: process.env.REACT_APP_USER_ID,
+      creator: storedUserLoggedInData.userId,
       category: initialCategory ? initialCategory : category,
       available: true,
     };

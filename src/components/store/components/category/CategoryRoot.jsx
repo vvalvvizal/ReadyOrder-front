@@ -8,8 +8,10 @@ const CategoryRoot = ({ onCategoryChange, initialCategory }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+
         const response = await axios.get(
-          `/api/menus/categories/${process.env.REACT_APP_USER_ID}`
+          `/api/menus/categories/${storedUserLoggedInData.userId}`
         );
         console.log(response.data);
         setCategories(response.data);
