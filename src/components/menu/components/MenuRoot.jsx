@@ -20,8 +20,10 @@ const MenuRoot = (props) => {
 
   const fetchData = async () => {
     try {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+
       const response = await axios.get(
-        `/api/menus/${process.env.REACT_APP_USER_ID}`
+        `/api/menus/${storedUserLoggedInData.userId}`
       );
       setItems(response.data);
     } catch (error) {
@@ -40,10 +42,15 @@ const MenuRoot = (props) => {
       );
       console.log(itemsToDelete);
 
+      // jwt 받아오기
+      const storedUserLoggedInData = JSON.parse(
+        localStorage.getItem("userData")
+      );
+
       const deletePromises = itemsToDelete.map((id) =>
         axios.delete(`/api/menus/${id}`, {
           headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+            Authorization: `Bearer ${storedUserLoggedInData.token}`,
           },
         })
       );

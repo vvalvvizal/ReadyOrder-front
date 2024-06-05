@@ -47,11 +47,14 @@ const ManagementMenuItem = (props) => {
 
   const updateItemAvailability = async (itemId, available) => {
     try {
+      const storedUserLoggedInData = JSON.parse(
+        localStorage.getItem("userData")
+      );
       const response = await fetch(`/api/menus/${itemId}/available`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${storedUserLoggedInData.token}`,
         },
         body: JSON.stringify({ available }), // Stringify the body
       });

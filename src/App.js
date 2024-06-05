@@ -24,6 +24,7 @@ import "./App.css";
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
@@ -31,10 +32,26 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
+  // useEffect는 <APP>이 렌더링 후에 실행되는 함수
+  useEffect(() => {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+    if (
+      storedUserLoggedInData &&
+      storedUserLoggedInData.token &&
+      (new Date(storedUserLoggedInData.expiration) > new Date())
+    ) {
+      setIsLoggedIn(true);
+    } else {
+
+      //localStorage.removeItem("userData");
+      setIsLoggedIn(false);
+    }
+  }, []);
 
   const isLoggedInHandler = () => {
     setIsLoggedIn(true);
   };
+
   return (
     <CartProvider>
       <Router>

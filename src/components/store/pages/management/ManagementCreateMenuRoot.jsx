@@ -21,9 +21,12 @@ const ManagementCreateMenuRoot = () => {
     console.log(body);
 
     try {
+      const storedUserLoggedInData = JSON.parse(
+        localStorage.getItem("userData")
+      );
       await axios.post("/api/menus/", body, {
         headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+          Authorization: `Bearer ${storedUserLoggedInData.token}`,
         },
       });
       console.log("create ok");
