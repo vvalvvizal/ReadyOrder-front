@@ -75,15 +75,30 @@ const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
       password: formState.inputs.password.value,
     };
 
+    // 로그인 요청 코드
     try {
       const response = await axios.post("/api/users/login", loginData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+      // 로그인 성공했을 때 코드
       if (response.status === 200) {
         console.log("Login successful", response.data);
+        // 토큰 종료 시점 계산
+        const tokenExpirationDate = new Date(
+          new Date().getTime() + 24 * 60 * 60 * 1000
+        );
+        // 로컬에 저장
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({
+            userId: response.data.userId,
+            email: response.data.email,
+            token: response.data.token,
+            expiration: tokenExpirationDate.toISOString(),
+          })
+        );
         isLoggedInHandler();
         history.push("/main");
         // console.log(isLoggedIn);

@@ -13,6 +13,8 @@ const ManagementCreateMenuPage = (props) => {
   const [image, setImage] = useState(null);
 
   const handleSave = () => {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+
     const body = {
       title: menuName,
       price: parseInt(price, 10),
