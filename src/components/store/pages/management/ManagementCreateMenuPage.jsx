@@ -19,7 +19,7 @@ const ManagementCreateMenuPage = (props) => {
       image_url: "https://picsum.photos/200",
       tag: description,
       creator: process.env.REACT_APP_USER_ID,
-      category: initialCategory ? initialCategory : category,
+      category: category ? category : initialCategory,
       available: true,
     };
 

@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useState, useEffect } from "react";
 import Select from "react-select";
 
 const SelectButton = (props) => {
@@ -11,6 +11,8 @@ const SelectButton = (props) => {
       color: "black",
     }),
   };
+
+
   if (!props.categories || props.categories.length === 0) {
     return (
       <div>
