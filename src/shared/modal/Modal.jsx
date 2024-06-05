@@ -15,6 +15,9 @@ const Modal = ({ show, onClose, viewModal, children }) => {
       modalClass = styles.successModal;
       closeButtonClass = styles.successCloseButton;
       break;
+    case "QRCode":
+      modalClass = styles.QRCodeModal;
+      break;
     default:
       modalClass = styles.modal;
       break;

@@ -6,7 +6,7 @@ import { ReactComponent as Plus } from "../util/icon/plus.svg";
 import { ReactComponent as Minus } from "../util/icon/minus.svg";
 import { ReactComponent as Success } from "../util/icon/success.svg";
 import { CartContext } from "../components/CartContext";
-import { ThreeDotsWave } from "../../menu/util/ReactLoading";
+import { ThreeDotsWave } from "../../../shared/util/ReactLoading";
 import { useHistory } from "react-router-dom";
 import Modal from "../../../shared/modal/Modal";
 
@@ -61,7 +61,7 @@ const MenuDetailPage = () => {
                 </div>
                 <div className={styles["item-info-text"]}>
                   <h2>{item.title}</h2>
-                  <p>{item.price}₩</p>
+                  <p>{item.price.toLocaleString()}₩</p>
                 </div>
               </div>
               <div className={styles["item-tag"]}>

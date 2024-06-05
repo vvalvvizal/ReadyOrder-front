@@ -34,7 +34,7 @@ const Foot = (props) => {
     case "recipe_order":
       content = (
         <div className="order-view">
-          <p>총 결제 금액 : {total}</p>
+          <p>총 결제 금액 : {total.toLocaleString()} 원</p>
         </div>
       );
       break;

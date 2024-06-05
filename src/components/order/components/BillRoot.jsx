@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ThreeDotsWave } from "../../menu/util/ReactLoading";
+import { ThreeDotsWave } from "../../../shared/util/ReactLoading";
 import Divider from "../../../shared/Divider/Divider";
 import { useParams } from "react-router-dom";
 
@@ -32,10 +32,14 @@ const BillRoot = ({ handleTotal }) => {
     }
   }, [bills, handleTotal]);
 
-  if (!bills) {
-    return <ThreeDotsWave />;
+  if (!bills || !bills.detail || bills.detail.length === 0) {
+    return (
+      <div className={styles.emptybox}>
+        <ThreeDotsWave />
+        <p className={styles.emptyText}>주문내역이 없습니다.</p>
+      </div>
+    );
   }
-
   return (
     <div>
       {bills.detail.map((item, index) => (
@@ -48,7 +52,7 @@ const BillRoot = ({ handleTotal }) => {
             />
             <div className={styles["cart-item-text"]}>
               <h3>{item[0]}</h3>
-              <p>{item[1]}</p>
+              <p>{item[1].toLocaleString()}</p>
             </div>
             <div className={styles["item-button"]}>
               <div className={styles["item-button-num"]}>

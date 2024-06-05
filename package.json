@@ -12,6 +12,7 @@
     "http-proxy-middleware": "^3.0.0",
     "primereact": "^10.6.5",
     "proxy": "^2.1.1",
+    "qrcode": "^1.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-image-file": "^0.3.0",

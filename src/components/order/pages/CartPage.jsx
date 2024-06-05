@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import Header from "../../../shared/header/Header";
 import Footer from "../../../shared/footer/Footer";
 import Modal from "../../../shared/modal/Modal";
+import { ThreeDotsWave } from "../../../shared/util/ReactLoading";
 import { CartContext } from "../components/CartContext";
 import { ReactComponent as Minus } from "../util/icon/minus.svg";
 import { ReactComponent as Plus } from "../util/icon/plus.svg";
@@ -29,7 +30,9 @@ const CartPage = () => {
   } = useContext(CartContext);
 
   const handleShow = () => {
-    setShowModal(true);
+    if (Object.keys(cart).length > 0) {
+      setShowModal(true);
+    }
   };
 
   const handleClose = () => {
@@ -37,6 +40,15 @@ const CartPage = () => {
   };
 
   const renderCartItems = () => {
+    if (Object.keys(cart).length === 0) {
+      return (
+        <div className={styles.emptybox}>
+          <ThreeDotsWave />
+          <p className={styles.emptyText}>장바구니가 비었습니다.</p>
+        </div>
+      );
+    }
+
     return Object.keys(cart).map((itemId) => {
       const { title, image_url, price, quantity } = cart[itemId];
       return (
