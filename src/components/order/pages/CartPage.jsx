@@ -13,7 +13,7 @@ import OrderRoot from "../components/OrderRoot";
 import styles from "./CartPage.module.css";
 
 const CartPage = () => {
-  let { tableNum } = useParams();
+  let { uid, tableNum } = useParams();
   const viewHeader = "push-order";
   const viewFooter = "push_order";
   const [showModal, setShowModal] = useState(false);
@@ -110,7 +110,7 @@ const CartPage = () => {
             </div>
             <div className={styles.ButtonContainer}>
               <NavLink
-                to={`/order/menu/${tableNum}`}
+                to={`/${uid}/order/menu/${tableNum}`}
                 style={{ textDecoration: "none" }}
               >
                 <button className={styles.orderButton} onClick={resetItem}>
@@ -120,7 +120,7 @@ const CartPage = () => {
               <NavLink
                 style={{ textDecoration: "none" }}
                 to={{
-                  pathname: `/orders/${tableNum}/bill`,
+                  pathname: `/${uid}/order/${tableNum}/bill`,
                   state: { tableNum },
                 }}
               >

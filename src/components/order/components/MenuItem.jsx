@@ -7,7 +7,7 @@ import { CartContext } from "./CartContext";
 const MenuItem = (props) => {
   // const { handleAddMenu } = useContext(CartContext);
 
-  const { tableNum } = useParams();
+  const { tableNum, uid } = useParams();
   const categoryArray = Object.entries(props.items).map(
     ([category, items]) => ({
       category,
@@ -48,7 +48,7 @@ const MenuItem = (props) => {
                     <NavLink
                       className={styles["item-content"]}
                       to={{
-                        pathname: `/order/menu/${tableNum}/${item._id}`,
+                        pathname: `/${uid}/order/menu/${tableNum}/${item._id}`,
                         state: { item },
                       }}
                       key={item._id}

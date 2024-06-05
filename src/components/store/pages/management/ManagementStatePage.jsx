@@ -1,12 +1,19 @@
-import React from "react";
-import Header from "../../../../shared/header/Header";
+import React, { useState } from "react";
+import axios from "axios";
+import PosPage from "../../../pos/PosPage";
 const ManagementStatePage = () => {
+  // const [Data, setData] = useState();
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get(``);
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.log("Get Error", error);
+  //   }
+  // };
   return (
     <div>
-      <Header />
-      <div className="content">
-        <p>매장 관리 페이지</p>
-      </div>
+      <PosPage />
     </div>
   );
 };

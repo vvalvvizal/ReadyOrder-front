@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import Modal from "../../../../shared/modal/Modal";
 import ManagementCreateMenuPage from "./ManagementCreateMenuPage";
 
@@ -10,6 +10,7 @@ const ManagementCreateMenuRoot = () => {
   const { category } = location.state || {}; // 전달된 category 값 받기
   const [showModal, setShowModal] = useState(false);
   const viewModal = "failModal";
+  const history = useHistory();
   const handleShow = () => {
     setShowModal(true);
   };
@@ -31,6 +32,7 @@ const ManagementCreateMenuRoot = () => {
       });
       console.log("create ok");
       create_response = "success";
+      history.go(-1);
     } catch (error) {
       console.log("Create Error", error);
       create_response = "fail";
@@ -41,7 +43,7 @@ const ManagementCreateMenuRoot = () => {
     <div>
       <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
         <div className="OrderModal">
-          <p style={{ fontSize: "20px" }}>실패! 다시 시도해주세요</p>
+          <p style={{ fontSize: "20px" }}>다시 시도해주세요.</p>
         </div>
       </Modal>
       <ManagementCreateMenuPage

@@ -15,7 +15,6 @@ import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import BillPage from "./components/order/pages/BillPage.jsx";
 // import Header from "./shared/header/Header.jsx";
-import PosPage from "./components/pos/PosPage.jsx";
 import ManagementCreateMenuRoot from "./components/store/pages/management/ManagementCreateMenuRoot.jsx";
 import MenuDetailPage from "./components/order/pages/MenuDetailPage.jsx";
 import { CartProvider } from "./components/order/components/CartContext.js";
@@ -27,26 +26,22 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
+    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+    if (
+      storedUserLoggedInData &&
+      storedUserLoggedInData.token &&
+      new Date(storedUserLoggedInData.expiration) > new Date()
+    ) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 3000); //3 seconds
 
     return () => clearTimeout(timer);
-  }, []);
-  // useEffect는 <APP>이 렌더링 후에 실행되는 함수
-  useEffect(() => {
-    const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
-    if (
-      storedUserLoggedInData &&
-      storedUserLoggedInData.token &&
-      (new Date(storedUserLoggedInData.expiration) > new Date())
-    ) {
-      setIsLoggedIn(true);
-    } else {
-
-      //localStorage.removeItem("userData");
-      setIsLoggedIn(false);
-    }
   }, []);
 
   const isLoggedInHandler = () => {
@@ -61,7 +56,7 @@ function App() {
             {showIntro ? (
               <IntroPage />
             ) : isLoggedIn ? (
-              <Redirect to="/main" />
+              <Redirect to="/store/main" />
             ) : (
               <Redirect to="/login" />
             )}
@@ -73,36 +68,43 @@ function App() {
               isLoggedInHandler={isLoggedInHandler}
             />
           </Route>
-          <Route path="/main">
-            <ManagementPage />
-          </Route>
-          <Route path="/:id/pos" exact>
-            <PosPage />
-          </Route>
-          <Route path="/store/state" exact>
-            <ManagementStatePage />
-          </Route>
-          <Route path="/store/menu" exact>
-            <ManagementMenuPage />
-          </Route>
-          <Route path="/store/menu/create" exact>
-            <ManagementCreateMenuRoot />
-          </Route>
-          <Route path="/store/qr" exact>
-            <QRPage />
+
+          <Route path="/store">
+            {isLoggedIn ? (
+              <>
+                <Route path="/store/main" exact>
+                  <ManagementPage />
+                </Route>
+
+                <Route path="/store/state" exact>
+                  <ManagementStatePage />
+                </Route>
+                <Route path="/store/menu" exact>
+                  <ManagementMenuPage />
+                </Route>
+                <Route path="/store/menu/create" exact>
+                  <ManagementCreateMenuRoot />
+                </Route>
+                <Route path="/store/qr" exact>
+                  <QRPage />
+                </Route>
+              </>
+            ) : (
+              <Redirect to="/" />
+            )}
           </Route>
 
-          <Route path="/order/menu/:tableNum" exact>
+          <Route path="/:uid/order/menu/:tableNum" exact>
             <MenuPage />
           </Route>
-          <Route path="/order/menu/:tableNum/:id" exact>
+          <Route path="/:uid/order/menu/:tableNum/:id" exact>
             <MenuDetailPage />
           </Route>
 
-          <Route path="/orders/:tableNum/bill" exact>
+          <Route path="/:uid/order/:tableNum/bill" exact>
             <BillPage />
           </Route>
-          <Route path="/order/cart/:tableNum" exact>
+          <Route path="/:uid/order/cart/:tableNum" exact>
             <CartPage />
           </Route>
 
