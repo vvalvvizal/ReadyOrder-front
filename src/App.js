@@ -14,7 +14,8 @@ import ManagementMenuPage from "./components/store/pages/management/ManagementMe
 import QRPage from "./components/store/pages/qr/QRPage.jsx";
 import ManagementStatePage from "./components/store/pages/management/ManagementStatePage.jsx";
 import BillPage from "./components/order/pages/BillPage.jsx";
-import Header from "./shared/header/Header.jsx";
+// import Header from "./shared/header/Header.jsx";
+import PosPage from "./components/pos/PosPage.jsx";
 import ManagementCreateMenuRoot from "./components/store/pages/management/ManagementCreateMenuRoot.jsx";
 import MenuDetailPage from "./components/order/pages/MenuDetailPage.jsx";
 import { CartProvider } from "./components/order/components/CartContext.js";
@@ -58,6 +59,9 @@ function App() {
           <Route path="/main">
             <ManagementPage />
           </Route>
+          <Route path="/:id/pos" exact>
+            <PosPage />
+          </Route>
           <Route path="/store/state" exact>
             <ManagementStatePage />
           </Route>
@@ -70,9 +74,7 @@ function App() {
           <Route path="/store/qr" exact>
             <QRPage />
           </Route>
-          {/* <Route path="/order/menu" exact>
-            <MenuPage />
-          </Route> */}
+
           <Route path="/order/menu/:tableNum" exact>
             <MenuPage />
           </Route>
