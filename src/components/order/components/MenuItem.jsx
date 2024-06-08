@@ -3,7 +3,7 @@ import styles from "./MenuItem.module.css"; // CSS 모듈 import
 import { ReactComponent as AddCart } from "../util/icon/AddCart.svg";
 import { NavLink, useParams } from "react-router-dom";
 import { CartContext } from "./CartContext";
-
+const URLRoot = "http://localhost:3001/api/";
 const MenuItem = (props) => {
   // const { handleAddMenu } = useContext(CartContext);
 
@@ -63,7 +63,7 @@ const MenuItem = (props) => {
                         </div>
                       </div>
                       <div className={styles["item-img"]}>
-                        <img src={item.image_url} alt={item.title} />
+                        <img src={URLRoot + item.image_url} alt={item.title} />
                       </div>
                     </NavLink>
                     {/* <div onClick={() => handleAddMenu(item._id)}>

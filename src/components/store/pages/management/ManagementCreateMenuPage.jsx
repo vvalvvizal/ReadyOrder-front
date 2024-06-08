@@ -4,6 +4,7 @@ import Category from "../../components/category/CategoryRoot";
 import { Form, Uploader } from "rsuite";
 import CameraRetroIcon from "@rsuite/icons/legacy/CameraRetro";
 import Header from "../../../../shared/header/Header";
+import ImageUpload from "../../../../shared/file/ImageUpload";
 const ManagementCreateMenuPage = (props) => {
   const { onSave, initialCategory } = props;
   const [category, setCategory] = useState("");
@@ -18,20 +19,33 @@ const ManagementCreateMenuPage = (props) => {
     const body = {
       title: menuName,
       price: parseInt(price, 10),
-      image_url: "https://picsum.photos/200",
+      image: image ? image : "https://picsum.photos/200",
       tag: description,
-      creator: process.env.REACT_APP_USER_ID,
+      creator: storedUserLoggedInData.userId,
       category: category ? category : initialCategory,
       available: true,
     };
-
     onSave(body);
   };
 
   const handleCategoryChange = (selectedCategory) => {
     setCategory(selectedCategory);
   };
+  const handleImageInput = (id, file, isValid) => {
+    try {
+      if (isValid) {
+        console.log("Creating object URL for file:", file); // 파일 객체 출력
+        setImage(file);
+      } else {
+        console.error("파일이 유효한 이미지가 아닙니다.");
+      }
+    } catch (error) {
+      console.error("create object URL에 실패", error);
+    }
+  };
+
   const viewHeader = "create-menu";
+
   return (
     <div>
       <Header viewHeader={viewHeader} />
@@ -60,8 +74,9 @@ const ManagementCreateMenuPage = (props) => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
-            <div className={styles["menu-input"]}>
-              <Uploader
+            <div className={styles["menu-input-file"]}>
+              <ImageUpload center id="image" onInput={handleImageInput} />
+              {/* <Uploader
                 listType="picture"
                 action="//jsonplaceholder.typicode.com/posts/"
                 onSuccess={(file) => setImage(file)}
@@ -69,7 +84,7 @@ const ManagementCreateMenuPage = (props) => {
                 <button>
                   <CameraRetroIcon />
                 </button>
-              </Uploader>
+              </Uploader> */}
             </div>
             <textarea
               className={styles["menu-textarea"]}

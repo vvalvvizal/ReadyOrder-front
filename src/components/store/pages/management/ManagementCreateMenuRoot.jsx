@@ -22,12 +22,26 @@ const ManagementCreateMenuRoot = () => {
     console.log(body);
 
     try {
+      const formData = new FormData();
+
+      formData.append("title", body.title);
+      formData.append("price", body.price);
+      formData.append("tag", body.tag);
+
+      formData.append("image", body.image);
+
+      formData.append("creator", body.creator);
+      formData.append("category", body.category);
+      formData.append("available", body.available);
+
       const storedUserLoggedInData = JSON.parse(
         localStorage.getItem("userData")
       );
-      await axios.post("/api/menus/", body, {
+
+      await axios.post("/api/menus/", formData, {
         headers: {
           Authorization: `Bearer ${storedUserLoggedInData.token}`,
+          "Content-Type": "multipart/form-data",
         },
       });
       console.log("create ok");
@@ -39,6 +53,7 @@ const ManagementCreateMenuRoot = () => {
       handleShow();
     }
   };
+
   return (
     <div>
       <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>

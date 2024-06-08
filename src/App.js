@@ -70,28 +70,24 @@ function App() {
           </Route>
 
           <Route path="/store">
-            {isLoggedIn ? (
-              <>
-                <Route path="/store/main" exact>
-                  <ManagementPage />
-                </Route>
+            <>
+              <Route path="/store/main" exact>
+                <ManagementPage />
+              </Route>
 
-                <Route path="/store/state" exact>
-                  <ManagementStatePage />
-                </Route>
-                <Route path="/store/menu" exact>
-                  <ManagementMenuPage />
-                </Route>
-                <Route path="/store/menu/create" exact>
-                  <ManagementCreateMenuRoot />
-                </Route>
-                <Route path="/store/qr" exact>
-                  <QRPage />
-                </Route>
-              </>
-            ) : (
-              <Redirect to="/" />
-            )}
+              <Route path="/store/state" exact>
+                <ManagementStatePage />
+              </Route>
+              <Route path="/store/menu" exact>
+                <ManagementMenuPage />
+              </Route>
+              <Route path="/store/menu/create" exact>
+                <ManagementCreateMenuRoot />
+              </Route>
+              <Route path="/store/qr" exact>
+                <QRPage />
+              </Route>
+            </>
           </Route>
 
           <Route path="/:uid/order/menu/:tableNum" exact>
