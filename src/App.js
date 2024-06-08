@@ -39,7 +39,7 @@ function App() {
 
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 3000); //3 seconds
+    }, 1000); //1 seconds
 
     return () => clearTimeout(timer);
   }, []);

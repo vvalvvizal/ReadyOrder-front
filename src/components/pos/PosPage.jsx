@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PosPage.module.css";
 import { ReactComponent as BackgroundSVG } from "./util/WoodBackground.svg";
 import { ReactComponent as Close } from "./util/Close.svg";
@@ -6,6 +6,8 @@ import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
 import { ReactComponent as Home } from "./util/Home.svg";
 
 const PosPage = () => {
+  const [tableBills, setTableBills] = useState(["0", "0", "0", "0", "0", "0", "0"]);
+
   const Num = 6;
   const positions = [
     { x: -200, y: 0 },
@@ -15,7 +17,32 @@ const PosPage = () => {
     { x: -200, y: 300 },
     { x: 200, y: 330 },
   ];
+
   const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
+
+  useEffect(() => {
+    const eventSource = new EventSource(
+      `http://localhost:3001/api/orders/pos/${storedUserLoggedInData.userId}`
+    );
+
+    eventSource.onmessage = (event) => {
+      console.log(event.data)
+      const data = JSON.parse(event.data);
+      if (data.message) {
+      } else {
+        setTableBills((prevBills) => {
+          const updatedBills = [...prevBills];
+          updatedBills[parseInt(data.tableNumber)] = data.bill.total;
+          console.log(updatedBills)
+          return updatedBills;
+        });
+      }
+    };
+
+    return () => {
+      eventSource.close();
+    };
+  }, []);
 
   const getTodayDate = () => {
     const today = new Date();
@@ -30,7 +57,7 @@ const PosPage = () => {
     <div className={styles["content"]}>
       <div className={styles["pos-content"]}>
         <div className={styles["pos-header"]}>
-          <h1>POS</h1>
+          <h1>POS </h1>
           <div className={styles["pos-header-textbox"]}>
             <ul style={{ flexDirection: "column", marginRight: "120px" }}>
               <li>매장명 : 모닝건</li>
@@ -60,7 +87,8 @@ const PosPage = () => {
                   transform: `translate(${positions[index].x}px, ${positions[index].y}px)`,
                 }}
               >
-                <p>{index + 1}</p>
+                <p className={styles["tableNumber"]}>{index + 1}</p>
+                <p className={styles["totalPrice"]}>{tableBills[index + 1]}원</p>
               </div>
             ))}
           </div>

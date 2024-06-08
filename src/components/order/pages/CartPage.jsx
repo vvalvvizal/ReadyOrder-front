@@ -126,7 +126,7 @@ const CartPage = () => {
                 style={{ textDecoration: "none" }}
               >
                 <button className={styles.orderButton} onClick={resetItem}>
-                  <p>메뉴 추가하기</p>
+                  <p>메뉴판으로 이동</p>
                 </button>
               </NavLink>
               <NavLink
