@@ -10,6 +10,7 @@ import Checkbox from "./checkbox/CheckBox";
 import Divider from "../../../shared/Divider/Divider";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
+const URLRoot = "http://localhost:3001/api/";
 
 export const checkdItemsContext = createContext({
   checkedItems: {},
@@ -115,7 +116,7 @@ const ManagementMenuItem = (props) => {
                   />
                 </div>
                 <div className={styles["item-img"]}>
-                  <img src={item.image_url} alt={item.title} />
+                  <img src={URLRoot + item.image_url} alt={item.title} />
                 </div>
                 <div className={styles["item-textbox"]}>
                   <div className={styles["item-title"]}>{item.title}</div>
