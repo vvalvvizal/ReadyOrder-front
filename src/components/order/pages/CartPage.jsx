@@ -13,6 +13,8 @@ import OrderRoot from "../components/OrderRoot";
 
 import styles from "./CartPage.module.css";
 
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+
 const CartPage = () => {
   let { uid, tableNum } = useParams();
   const viewHeader = "push-order";
@@ -55,7 +57,7 @@ const CartPage = () => {
         <div key={itemId} className={styles["item-content"]}>
           <div className={styles["cart-item"]}>
             <img
-              src={image_url}
+              src={URLRoot+image_url}
               alt={title}
               className={styles["cart-item-img"]}
             />

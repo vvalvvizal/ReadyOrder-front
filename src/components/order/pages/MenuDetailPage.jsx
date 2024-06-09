@@ -12,6 +12,8 @@ import Modal from "../../../shared/modal/Modal";
 
 import styles from "./MenuDetailPage.module.css";
 
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+
 const MenuDetailPage = () => {
   const [num, setNum] = useState(1);
   const location = useLocation();
@@ -57,7 +59,7 @@ const MenuDetailPage = () => {
             <div>
               <div className={styles["item-info"]}>
                 <div className={styles["item-img"]}>
-                  <img src={item.image_url} alt={item.title} />
+                  <img src={URLRoot + item.image_url} alt={item.title} />
                 </div>
                 <div className={styles["item-info-text"]}>
                   <h2>{item.title}</h2>

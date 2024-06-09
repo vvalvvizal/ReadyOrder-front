@@ -77,11 +77,15 @@ const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
 
     // 로그인 요청 코드
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_ROOT}/api/users/login`, loginData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ROOT}/api/users/login`,
+        loginData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       // 로그인 성공했을 때 코드
       if (response.status === 200) {
         console.log("Login successful", response.data);
