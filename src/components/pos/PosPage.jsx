@@ -22,7 +22,7 @@ const PosPage = () => {
 
   useEffect(() => {
     const eventSource = new EventSource(
-      `http://localhost:3001/api/orders/pos/${storedUserLoggedInData.userId}`
+      `${process.env.REACT_APP_API_ROOT}/api/orders/pos/${storedUserLoggedInData.userId}`
     );
 
     eventSource.onmessage = (event) => {

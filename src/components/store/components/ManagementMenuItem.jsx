@@ -10,7 +10,7 @@ import Checkbox from "./checkbox/CheckBox";
 import Divider from "../../../shared/Divider/Divider";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
-const URLRoot = "http://localhost:3001/api/";
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
 
 export const checkdItemsContext = createContext({
   checkedItems: {},
@@ -51,7 +51,7 @@ const ManagementMenuItem = (props) => {
       const storedUserLoggedInData = JSON.parse(
         localStorage.getItem("userData")
       );
-      const response = await fetch(`/api/menus/${itemId}/available`, {
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT}/api/menus/${itemId}/available`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

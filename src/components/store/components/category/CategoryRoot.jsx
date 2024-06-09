@@ -11,7 +11,7 @@ const CategoryRoot = ({ onCategoryChange, initialCategory }) => {
     const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
 
         const response = await axios.get(
-          `/api/menus/categories/${storedUserLoggedInData.userId}`
+          `${process.env.REACT_APP_API_ROOT}/api/menus/categories/${storedUserLoggedInData.userId}`
         );
         console.log(response.data);
         setCategories(response.data);

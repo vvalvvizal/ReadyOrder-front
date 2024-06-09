@@ -32,7 +32,7 @@ const MenuRoot = (props) => {
       }
 
       const response = await axios.get(
-        `/api/menus/${storedUserLoggedInData.userId}`
+        `${process.env.REACT_APP_API_ROOT}/api/menus/${storedUserLoggedInData.userId}`
       );
       setItems(response.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const MenuRoot = (props) => {
 
   const UserfetchData = async () => {
     try {
-      const response = await axios.get(`/api/menus/${uid}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_ROOT}/api/menus/${uid}`);
       setItems(response.data);
     } catch (error) {
       console.error("Get Error", error);
@@ -70,7 +70,7 @@ const MenuRoot = (props) => {
       );
 
       const deletePromises = itemsToDelete.map((id) =>
-        axios.delete(`/api/menus/${id}`, {
+        axios.delete(`${process.env.REACT_APP_API_ROOT}/api/menus/${id}`, {
           headers: {
             Authorization: `Bearer ${storedUserLoggedInData.token}`,
           },

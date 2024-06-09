@@ -13,7 +13,7 @@ const BillRoot = ({ handleTotal }) => {
   useEffect(() => {
     const handleGetBill = async () => {
       try {
-        const response = await axios.get(`/api/orders/${tableNum}/bill`);
+        const response = await axios.get(`${process.env.REACT_APP_API_ROOT}/api/orders/${tableNum}/bill`);
         setBills(response.data);
         console.log("Bill Get Success");
       } catch (error) {

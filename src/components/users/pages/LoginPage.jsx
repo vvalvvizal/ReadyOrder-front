@@ -77,7 +77,7 @@ const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
 
     // 로그인 요청 코드
     try {
-      const response = await axios.post("/api/users/login", loginData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_ROOT}/api/users/login`, loginData, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -38,7 +38,7 @@ const ManagementCreateMenuRoot = () => {
         localStorage.getItem("userData")
       );
 
-      await axios.post("/api/menus/", formData, {
+      await axios.post(`${process.env.REACT_APP_API_ROOT}/api/menus/`, formData, {
         headers: {
           Authorization: `Bearer ${storedUserLoggedInData.token}`,
           "Content-Type": "multipart/form-data",

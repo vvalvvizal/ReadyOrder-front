@@ -10,7 +10,7 @@ const OrderRoot = ({ cart, tableNum }) => {
       }));
 
       try {
-        await axios.post(`/api/orders/${tableNum}`, { orders });
+        await axios.post(`${process.env.REACT_APP_API_ROOT}/api/orders/${tableNum}`, { orders });
         console.log("Order submitted successfully");
       } catch (error) {
         console.error("Order submission failed", error);
