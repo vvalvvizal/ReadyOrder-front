@@ -1,0 +1,164 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 10% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+.text {
+  width: 285px;
+  height: 46.001px;
+  flex-shrink: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10%;
+}
+.text p {
+  align-self: flex-start;
+  color: #222121;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+.hi {
+  align-self: flex-start;
+  color: #979797;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 23.4px */
+  letter-spacing: -0.2px;
+  margin-bottom: 0px;
+}
+.makeQR-box {
+  cursor: pointer;
+  display: inline-flex;
+  height: 200px;
+  padding: 100px 10px 80px 10px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 3px solid #f39800;
+  background: #fff;
+  box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.16);
+}
+.makeQR-box p {
+  width: 100%;
+  flex-shrink: 0;
+  color: #828282;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.QRimg {
+  width: 113.915px;
+  height: 112.368px;
+  flex-shrink: 0;
+}
+.QRcontent {
+  display: flex;
+  flex-direction: column;
+}
+
+.QRtext {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+}
+.QRtext h4 {
+  margin: 0;
+  color: #3e3a39;
+  font-feature-settings: "clig" off, "liga" off;
+
+  /* Heading/H4 */
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+.QRtext p {
+  margin: 0;
+  color: #979797;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+.QRCode {
+  display: flex;
+  width: 230px;
+  height: 230px;
+  flex-shrink: 0;
+  margin: 40px auto; /* 가운데 정렬 */
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 60%;
+}
+.ExclamationMark {
+  width: 11px;
+  height: 29.001px;
+  flex-shrink: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 30% auto;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .QRtext {
+    margin-top: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,89 @@
+.menu_list {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.warning {
+  position: relative; /* 상대 위치 지정 */
+}
+.warning p {
+  position: absolute; /* 절대 위치 지정 */
+  top: 50%; /* 상위 요소의 중앙에 정렬 */
+  left: 50%; /* 상위 요소의 중앙에 정렬 */
+  transform: translate(-50%, -50%); /* 수직, 수평 가운데 정렬 */
+}
+.category-select {
+  align-items: flex-start;
+}
+
+.top-content {
+  display: flex;
+
+  width: 100%;
+  height: 38px;
+  flex-direction: row;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 53%;
+  margin-bottom: 13px;
+}
+
+.delete-button p {
+  align-items: flex-end;
+  color: #f39800;
+  text-align: right;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.delete-button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: transparent;
+  background-color: transparent;
+  flex-shrink: 0;
+}
+.addMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+.addMenu p {
+  width: 195.298px;
+  color: #f39800;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+.emptybox {
+  margin-top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+.emptyText {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
+}

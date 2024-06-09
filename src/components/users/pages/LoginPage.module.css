@@ -1,0 +1,148 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 10% auto 20% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.content h1 {
+  color: #3e3a39;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 31.2px */
+  letter-spacing: -0.2px;
+}
+
+.content p {
+  color: var(--Greyscale-500, #6b7280);
+
+  /* body/large/regular */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.3px;
+}
+
+.input-div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.input {
+  display: flex;
+  width: 327px;
+  padding: 16px;
+  align-items: center;
+  gap: 12px;
+  border-width: 0px;
+  background: var(--Greyscale-50, #f9fafb);
+}
+.button-div {
+  display: flex;
+  width: 365px;
+  height: 56px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-width: 0px;
+  border-radius: 16px;
+  background-color: #f39800;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 호버 효과의 전환 효과 추가 */
+}
+.button-div:hover {
+  background-color: #ffae42; /* 호버 시 배경색 변경 */
+}
+
+.button-div p {
+  color: var(--Others-White, #fff);
+  text-align: center;
+  /* body/large/bold */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.3px;
+}
+
+.forgot h1 {
+  color: #ef8640;
+  padding-bottom: 5%;
+  /* body/large/bold */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.3px;
+}
+
+.signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup p {
+  color: var(--Greyscale-500, #6b7280);
+  text-align: center;
+  /* body/large/regular */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.3px;
+}
+
+.signup a {
+  color: #ef8640;
+
+  /* body/large/regular */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.3px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  color: #fff;
+  text-align: center;
+}
+.navbar {
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 30% auto;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+  }
+}

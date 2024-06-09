@@ -1,0 +1,147 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 10% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+.textbox {
+  display: flex;
+}
+.hi {
+  padding-top: 5px;
+  color: #979797;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+.id {
+  margin-left: 10px;
+  color: #3e3a39;
+  font-feature-settings: "clig" off, "liga" off;
+  /* Heading/H4 */
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+}
+.management {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.store-button {
+  margin-right: 3px;
+  display: flex;
+  width: 60%;
+  padding: 52px 39px 33px 40px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 23px;
+  border-radius: 10px;
+  background: #fff;
+  border-width: 0;
+  text-decoration: none;
+  /* spread */
+  box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.16);
+}
+.store-button:hover {
+  box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.3); /* 그림자 효과 변경 */
+}
+.store-button p {
+  color: #828282;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.menu-button {
+  text-decoration: none;
+  margin-left: 3px;
+  display: flex;
+  width: 60%;
+  padding: 52px 39px 33px 40px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 23px;
+  border-radius: 10px;
+  background: #fff;
+
+  /* spread */
+  box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.16);
+}
+.menu-button:hover {
+  box-shadow: -0.5px 2px 16px 1px rgba(79, 79, 79, 0.3); /* 그림자 효과 변경 */
+}
+.buttonbox {
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+.menu-button p {
+  color: #828282;
+  text-align: center;
+  font-family: Nunito;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.makeQR {
+  display: flex;
+  width: 300px;
+  height: 42px;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: #f39800;
+  box-shadow: -0.5px 2px 16px 0px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+.makeQR:hover {
+  background-color: #ffae42; /* 호버 시 배경색 변경 */
+}
+
+.makeQR p {
+  color: var(--Others-White, #fff);
+  text-align: center;
+
+  /* body/large/bold */
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.3px;
+}
+@media only screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 30% auto;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+/* .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  margin: 15% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 50% auto;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+  }
+} */
