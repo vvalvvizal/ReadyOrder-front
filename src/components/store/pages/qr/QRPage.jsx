@@ -29,7 +29,7 @@ const QRPage = () => {
   useEffect(() => {
     if (showModal) {
       QRCode.toString(
-        `/${storedUserLoggedInData.userId}/order/menu/${num}`,
+        `${process.env.REACT_APP_API_ROOT}/${storedUserLoggedInData.userId}/order/menu/${num}`,
         {
           errorCorrectionLevel: "H",
           type: "svg",
