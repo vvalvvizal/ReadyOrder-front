@@ -13,7 +13,7 @@ import OrderRoot from "../components/OrderRoot";
 
 import styles from "./CartPage.module.css";
 
-const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
 
 const CartPage = () => {
   let { uid, tableNum } = useParams();

@@ -12,7 +12,7 @@ import Modal from "../../../shared/modal/Modal";
 
 import styles from "./MenuDetailPage.module.css";
 
-const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
 
 const MenuDetailPage = () => {
   const [num, setNum] = useState(1);
