@@ -10,7 +10,7 @@ import Checkbox from "./checkbox/CheckBox";
 import Divider from "../../../shared/Divider/Divider";
 import { NavLink } from "react-router-dom";
 import { ReactComponent as MenuAddPlus } from "../../store/util/icon/MenuAddPlus.svg";
-const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
 
 export const checkdItemsContext = createContext({
   checkedItems: {},

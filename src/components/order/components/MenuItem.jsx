@@ -3,7 +3,7 @@ import styles from "./MenuItem.module.css"; // CSS 모듈 import
 import { ReactComponent as AddCart } from "../util/icon/AddCart.svg";
 import { NavLink, useParams } from "react-router-dom";
 import { CartContext } from "./CartContext";
-const URLRoot = `${process.env.REACT_APP_API_ROOT}/api/`;
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
 const MenuItem = (props) => {
   // const { handleAddMenu } = useContext(CartContext);
 
