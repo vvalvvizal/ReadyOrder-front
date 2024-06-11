@@ -42,7 +42,9 @@ const MenuRoot = (props) => {
 
   const UserfetchData = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_ROOT}/api/menus/${uid}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_ROOT}/api/menus/${uid}`
+      );
       setItems(response.data);
     } catch (error) {
       console.error("Get Error", error);
@@ -56,34 +58,47 @@ const MenuRoot = (props) => {
       AdminfetchData();
     }
   }, [props.userType]);
-
   const handleDelete = async () => {
     try {
       const itemsToDelete = Object.keys(checkedItems).filter(
         (key) => checkedItems[key]
       );
-      console.log(itemsToDelete);
+      console.log("삭제할 항목:", itemsToDelete);
 
-      // jwt 받아오기
+      // JWT 받아오기
       const storedUserLoggedInData = JSON.parse(
         localStorage.getItem("userData")
       );
 
-      const deletePromises = itemsToDelete.map((id) =>
-        axios.delete(`${process.env.REACT_APP_API_ROOT}/api/menus/${id}`, {
-          headers: {
-            Authorization: `Bearer ${storedUserLoggedInData.token}`,
-          },
-        })
-      );
-      await Promise.all(deletePromises);
-      console.log("delete ok");
+      if (!storedUserLoggedInData || !storedUserLoggedInData.token) {
+        throw new Error("사용자가 로그인되어 있지 않거나 토큰이 없습니다.");
+      }
+
+      // 순차적으로 삭제 요청 보내기
+      for (const id of itemsToDelete) {
+        try {
+          const response = await axios.delete(
+            `${process.env.REACT_APP_API_ROOT}/api/menus/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${storedUserLoggedInData.token}`,
+              },
+            }
+          );
+          console.log(`항목 ${id} 삭제 완료:`, response);
+        } catch (error) {
+          console.error(`항목 ${id} 삭제 오류:`, error);
+          throw error; // 외부 catch로 에러 전달
+        }
+      }
+
+      console.log("모든 항목이 성공적으로 삭제되었습니다.");
 
       // 삭제 후 다시 데이터 가져오기
       AdminfetchData();
       UserfetchData();
     } catch (error) {
-      console.error("Delete Error", error);
+      console.error("삭제 오류", error);
       handleShow();
     }
   };

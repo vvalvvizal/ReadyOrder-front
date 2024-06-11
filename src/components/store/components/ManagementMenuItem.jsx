@@ -51,14 +51,17 @@ const ManagementMenuItem = (props) => {
       const storedUserLoggedInData = JSON.parse(
         localStorage.getItem("userData")
       );
-      const response = await fetch(`${process.env.REACT_APP_API_ROOT}/api/menus/${itemId}/available`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${storedUserLoggedInData.token}`,
-        },
-        body: JSON.stringify({ available }), // Stringify the body
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_ROOT}/api/menus/${itemId}/available`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${storedUserLoggedInData.token}`,
+          },
+          body: JSON.stringify({ available }), // Stringify the body
+        }
+      );
       if (!response.ok) {
         throw new Error("put error");
       }

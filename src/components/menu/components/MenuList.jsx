@@ -19,10 +19,20 @@ const MenuList = (props) => {
   // console.log(categories);
   if (!menus || menus.length === 0) {
     return (
-      <div className="emptybox">
-        <ThreeDotsWave />
-        <p className="emptyText">메뉴가 없습니다.</p>
-      </div>
+      <>
+        <div className="emptybox">
+          <ThreeDotsWave />
+          <p className="emptyText">메뉴가 없습니다.</p>
+        </div>
+        {menuProps === "admin" && (
+          <NavLink to="/store/menu/create" style={{ textDecoration: "none" }}>
+            <div className="addMenu" onClick={props.handleCreate}>
+              <MenuAddPlus />
+              <p>메뉴 추가</p>
+            </div>
+          </NavLink>
+        )}
+      </>
     );
   }
 
