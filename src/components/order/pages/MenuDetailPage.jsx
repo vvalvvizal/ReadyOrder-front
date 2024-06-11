@@ -53,7 +53,7 @@ const MenuDetailPage = () => {
   return (
     <div>
       <Header viewHeader={viewHeader} />
-      <div className="content">
+      <div className={styles.content}>
         <div>
           {item ? (
             <div>

@@ -5,6 +5,7 @@ import { Form, Uploader } from "rsuite";
 import CameraRetroIcon from "@rsuite/icons/legacy/CameraRetro";
 import Header from "../../../../shared/header/Header";
 import ImageUpload from "../../../../shared/file/ImageUpload";
+
 const ManagementCreateMenuPage = (props) => {
   const { onSave, initialCategory } = props;
   const [category, setCategory] = useState("");
@@ -49,7 +50,7 @@ const ManagementCreateMenuPage = (props) => {
   return (
     <div>
       <Header viewHeader={viewHeader} />
-      <div className="content">
+      <div className={styles.content}>
         <div className={styles["menu-info"]}>
           <p>메뉴 정보</p>
         </div>

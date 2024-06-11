@@ -9,7 +9,6 @@ import axios from "axios";
 const PosPage = () => {
   const Num = 6;
   const [tableBills, setTableBills] = useState(new Array(Num));
-  const [tableBillsOb, setTableBillsOb] = useState(new Array(Num));
 
   const positions = [
     { x: -200, y: 0 },
@@ -62,7 +61,7 @@ const PosPage = () => {
     return () => {
       eventSource.close();
     };
-  }, []);
+  }, [storedUserLoggedInData.userId]);
 
   const getTodayDate = () => {
     const today = new Date();
@@ -74,7 +73,7 @@ const PosPage = () => {
   const todayDate = getTodayDate(); // 오늘 날짜 가져오기
 
   return (
-    <div className={styles["content"]}>
+    <div className={styles.content}>
       <div className={styles["pos-content"]}>
         <div className={styles["pos-header"]}>
           <h1>POS </h1>
@@ -100,13 +99,7 @@ const PosPage = () => {
           </div>
           <div className={styles["tableBox-container"]}>
             {Array.from({ length: Num }).map((_, index) => (
-              <div
-                key={index}
-                className={styles.tableBox}
-                style={{
-                  transform: `translate(${positions[index].x}px, ${positions[index].y}px)`,
-                }}
-              >
+              <div key={index} className={styles.tableBox}>
                 <p className={styles["tableNumber"]}>{index + 1}</p>
                 <p className={styles["totalPrice"]}>
                   {tableBills[index + 1]}원

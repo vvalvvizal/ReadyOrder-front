@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 12px;
 }
+
 .menu-input {
   display: flex;
   flex-direction: row;
@@ -13,6 +14,7 @@
   border-radius: 3px;
   border: 1px solid #e0dede;
   background: #fff;
+  font-size: 16px;
 }
 .menu-input-file {
   display: flex;
@@ -56,6 +58,7 @@
 }
 
 .menu-textarea {
+  font-size: 16px;
   width: 335px;
   height: 163px;
   flex-shrink: 0;
@@ -94,4 +97,28 @@ input[type="file"]::-webkit-file-upload-button {
   font-weight: 700;
   line-height: 150%; /* 24px */
   letter-spacing: 0.3px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 10% auto;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    margin: 20% 3%;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 20px;
+  }
 }
