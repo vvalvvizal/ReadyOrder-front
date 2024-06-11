@@ -7,7 +7,7 @@
   background: #f39800;
   display: flex;
   z-index: 1000; /* 다른 요소 위에 헤더를 표시하기 위해 z-index 설정 */
-  height: 86px;
+  height: 68px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
