@@ -7,7 +7,8 @@ import ManagementCreateMenuPage from "./ManagementCreateMenuPage";
 const ManagementCreateMenuRoot = () => {
   let create_response = "";
   const location = useLocation();
-  const { category } = location.state || {}; // 전달된 category 값 받기
+  const { category } = location.state || {}; // 전달된 category 값 받기\
+  console.log(category);
   const [showModal, setShowModal] = useState(false);
   const viewModal = "failModal";
   const history = useHistory();
@@ -38,15 +39,20 @@ const ManagementCreateMenuRoot = () => {
         localStorage.getItem("userData")
       );
 
-      await axios.post(`${process.env.REACT_APP_API_ROOT}/api/menus/`, formData, {
-        headers: {
-          Authorization: `Bearer ${storedUserLoggedInData.token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `${process.env.REACT_APP_API_ROOT}/api/menus/`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${storedUserLoggedInData.token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log("create ok");
       create_response = "success";
       history.go(-1);
+      console.log(category);
     } catch (error) {
       console.log("Create Error", error);
       create_response = "fail";

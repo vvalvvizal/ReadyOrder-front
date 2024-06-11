@@ -56,7 +56,13 @@ const MenuList = (props) => {
         selectedCategory={category}
         handleCreate={props.handleCreate}
       />
-      <NavLink to="/store/menu/create" style={{ textDecoration: "none" }}>
+      <NavLink
+        to={{
+          pathname: "/store/menu/create",
+          state: { category: "신메뉴" },
+        }}
+        style={{ textDecoration: "none" }}
+      >
         <div className="addMenu" onClick={props.handleCreate}>
           <MenuAddPlus />
           <p>메뉴 추가</p>
