@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 
 import styles from "../../order/pages/CartPage.module.css";
 
+const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
+
 const BillRoot = ({ handleTotal }) => {
   const { tableNum } = useParams();
   const [bills, setBills] = useState(null);
@@ -46,7 +48,7 @@ const BillRoot = ({ handleTotal }) => {
         <div key={index} className={styles["item-content"]}>
           <div className={styles["cart-item"]}>
             <img
-              src={item[4]}
+              src={URLRoot+item[4]}
               alt={item[0]}
               className={styles["cart-item-img"]}
             />

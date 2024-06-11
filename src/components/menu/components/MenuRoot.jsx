@@ -80,12 +80,13 @@ const MenuRoot = (props) => {
       console.log("delete ok");
 
       // 삭제 후 다시 데이터 가져오기
-      AdminfetchData();
-      UserfetchData();
+      await AdminfetchData();
+      await UserfetchData();
     } catch (error) {
       console.error("Delete Error", error);
       handleShow();
     }
+    setCheckedItems([])
   };
 
   return (
