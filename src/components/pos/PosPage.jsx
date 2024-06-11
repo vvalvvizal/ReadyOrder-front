@@ -4,11 +4,13 @@ import { ReactComponent as BackgroundSVG } from "./util/WoodBackground.svg";
 import { ReactComponent as Close } from "./util/Close.svg";
 import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
 import { ReactComponent as Home } from "./util/Home.svg";
+import axios from "axios";
 
 const PosPage = () => {
-  const [tableBills, setTableBills] = useState(["0", "0", "0", "0", "0", "0", "0"]);
-
   const Num = 6;
+  const [tableBills, setTableBills] = useState(new Array(Num));
+  const [tableBillsOb, setTableBillsOb] = useState(new Array(Num));
+
   const positions = [
     { x: -200, y: 0 },
     { x: 200, y: 50 },
@@ -25,19 +27,37 @@ const PosPage = () => {
       `${process.env.REACT_APP_API_ROOT}/api/orders/pos/${storedUserLoggedInData.userId}`
     );
 
+    // SSE 이벤트 핸들러
     eventSource.onmessage = (event) => {
-      console.log(event.data)
+      console.log(event.data);
       const data = JSON.parse(event.data);
       if (data.message) {
       } else {
+        console.log(data);
         setTableBills((prevBills) => {
           const updatedBills = [...prevBills];
           updatedBills[parseInt(data.tableNumber)] = data.bill.total;
-          console.log(updatedBills)
+          console.log(updatedBills);
           return updatedBills;
         });
       }
     };
+
+    const tableBillsInit = async () => {
+      let tableBills = new Array(Num);
+      for (var idx = 1; idx <= Num; idx++) {
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_ROOT}/api/orders/${idx}/bill`
+          );
+          tableBills[idx] = response.data.total;
+        } catch (error) {
+          console.log(error);
+        }
+        setTableBills(tableBills);
+      }
+    };
+    tableBillsInit();
 
     return () => {
       eventSource.close();
@@ -88,7 +108,9 @@ const PosPage = () => {
                 }}
               >
                 <p className={styles["tableNumber"]}>{index + 1}</p>
-                <p className={styles["totalPrice"]}>{tableBills[index + 1]}원</p>
+                <p className={styles["totalPrice"]}>
+                  {tableBills[index + 1]}원
+                </p>
               </div>
             ))}
           </div>
