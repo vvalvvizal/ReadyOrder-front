@@ -9,7 +9,6 @@ import axios from "axios";
 const PosPage = () => {
   const Num = 6;
   const [tableBills, setTableBills] = useState(new Array(Num));
-  const [tableBillsOb, setTableBillsOb] = useState(new Array(Num));
 
   const positions = [
     { x: -200, y: 0 },
