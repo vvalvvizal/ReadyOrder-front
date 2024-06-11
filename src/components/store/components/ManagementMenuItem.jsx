@@ -105,7 +105,7 @@ const ManagementMenuItem = (props) => {
                 <div className={styles["checkButton"]}>
                   <Checkbox
                     // checkdItemsContext의 값에서 해당 아이템의 체크 여부를 가져옴
-                    checked={checkedItemsContext[item._id]}
+                    defaultChecked={checkedItemsContext[item._id]}
                     // checkdItemsContext의 값 업데이트 함수를 호출하여 체크 여부 변경
                     onClick={() =>
                       checkedItemsContext.setCheckedItems(
