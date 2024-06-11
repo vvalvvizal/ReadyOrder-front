@@ -95,12 +95,13 @@ const MenuRoot = (props) => {
       console.log("모든 항목이 성공적으로 삭제되었습니다.");
 
       // 삭제 후 다시 데이터 가져오기
-      AdminfetchData();
-      UserfetchData();
+      await AdminfetchData();
+      await UserfetchData();
     } catch (error) {
       console.error("삭제 오류", error);
       handleShow();
     }
+    setCheckedItems([])
   };
 
   return (
