@@ -131,7 +131,7 @@ const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
       <div className={styles.content}>
         <h1>안녕하세요, 사장님</h1>
         <p>서비스를 이용하기 위해 로그인 해주세요!</p>
-        <form onSubmit={loginHandler}>
+        <form onSubmit={loginHandler} className={styles.formdiv}>
           <div className={styles["input-div"]}>
             <input
               className={styles.input}
@@ -156,7 +156,7 @@ const LoginPage = ({ isLoggedIn, isLoggedInHandler }) => {
           </button>
         </form>
         <div className={styles.signup}>
-          <p>계정이 없다면</p>
+          <p>계정이 없다면 </p>
           <a href="/signup">회원가입(발급받기)</a>
         </div>
       </div>

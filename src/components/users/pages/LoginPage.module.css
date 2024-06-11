@@ -33,23 +33,25 @@
 }
 
 .input-div {
+  width: 95%;
   display: inline-flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
 }
 .input {
   display: flex;
-  width: 327px;
+  width: 100%;
   padding: 16px;
   align-items: center;
   gap: 12px;
   border-width: 0px;
   background: var(--Greyscale-50, #f9fafb);
+  font-size: 16px;
 }
 .button-div {
   display: flex;
-  width: 365px;
+  width: 100%;
   height: 56px;
   padding: 8px;
   justify-content: center;
@@ -77,7 +79,13 @@
   line-height: 150%; /* 24px */
   letter-spacing: 0.3px;
 }
-
+.forgot {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
 .forgot h1 {
   color: #ef8640;
   padding-bottom: 5%;
@@ -91,10 +99,13 @@
 }
 
 .signup {
+  width: 100%;
+  margin-top: 20%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 1%;
 }
 
 .signup p {
@@ -108,7 +119,10 @@
   line-height: 150%; /* 24px */
   letter-spacing: 0.3px;
 }
-
+.formdiv {
+  width: 100%;
+  height: auto;
+}
 .signup a {
   color: #ef8640;
 
@@ -140,9 +154,17 @@
     flex-direction: column;
     align-items: center;
     max-width: 400px;
-    margin: 30% auto;
+    margin: 0 3%;
     background-color: transparent;
     border-radius: 10px;
     padding: 20px;
+  }
+  .formdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: auto;
   }
 }

@@ -6,17 +6,17 @@ import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
 import { ReactComponent as Home } from "./util/Home.svg";
 
 const PosPage = () => {
-  const [tableBills, setTableBills] = useState(["0", "0", "0", "0", "0", "0", "0"]);
+  const [tableBills, setTableBills] = useState([
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+  ]);
 
   const Num = 6;
-  const positions = [
-    { x: -200, y: 0 },
-    { x: 200, y: 50 },
-    { x: -200, y: 150 },
-    { x: 200, y: 200 },
-    { x: -200, y: 300 },
-    { x: 200, y: 330 },
-  ];
 
   const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
 
@@ -26,14 +26,14 @@ const PosPage = () => {
     );
 
     eventSource.onmessage = (event) => {
-      console.log(event.data)
+      console.log(event.data);
       const data = JSON.parse(event.data);
       if (data.message) {
       } else {
         setTableBills((prevBills) => {
           const updatedBills = [...prevBills];
           updatedBills[parseInt(data.tableNumber)] = data.bill.total;
-          console.log(updatedBills)
+          console.log(updatedBills);
           return updatedBills;
         });
       }
@@ -42,7 +42,7 @@ const PosPage = () => {
     return () => {
       eventSource.close();
     };
-  }, []);
+  }, [storedUserLoggedInData.userId]);
 
   const getTodayDate = () => {
     const today = new Date();
@@ -54,7 +54,7 @@ const PosPage = () => {
   const todayDate = getTodayDate(); // 오늘 날짜 가져오기
 
   return (
-    <div className={styles["content"]}>
+    <div className={styles.content}>
       <div className={styles["pos-content"]}>
         <div className={styles["pos-header"]}>
           <h1>POS </h1>
@@ -80,15 +80,11 @@ const PosPage = () => {
           </div>
           <div className={styles["tableBox-container"]}>
             {Array.from({ length: Num }).map((_, index) => (
-              <div
-                key={index}
-                className={styles.tableBox}
-                style={{
-                  transform: `translate(${positions[index].x}px, ${positions[index].y}px)`,
-                }}
-              >
+              <div key={index} className={styles.tableBox}>
                 <p className={styles["tableNumber"]}>{index + 1}</p>
-                <p className={styles["totalPrice"]}>{tableBills[index + 1]}원</p>
+                <p className={styles["totalPrice"]}>
+                  {tableBills[index + 1]}원
+                </p>
               </div>
             ))}
           </div>

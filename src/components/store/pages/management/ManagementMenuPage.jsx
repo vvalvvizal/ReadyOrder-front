@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Menu from "../../../menu/components/MenuRoot";
 import Header from "../../../../shared/header/Header";
+
 const ManagementMenuPage = () => {
   const viewHeader = "management-menu";
 

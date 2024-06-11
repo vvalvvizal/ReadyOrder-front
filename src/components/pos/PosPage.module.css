@@ -1,3 +1,4 @@
+/* 기존 스타일 그대로 유지 */
 .content {
   width: 948px;
   height: 800px;
@@ -9,6 +10,7 @@
   max-width: 948px;
   margin: 5% auto;
 }
+
 .pos-content {
   width: 938px;
   height: 791px;
@@ -29,6 +31,7 @@
   justify-content: center;
   margin: 0 20px;
 }
+
 .pos-header h1 {
   display: flex;
   width: 180px;
@@ -43,6 +46,7 @@
   line-height: 140%; /* 67.2px */
   letter-spacing: 0.2px;
 }
+
 .pos-header-textbox {
   display: flex;
   flex-direction: row;
@@ -55,6 +59,7 @@
   margin-right: 13px;
   border-radius: 4px;
 }
+
 .pos-header-textbox ul {
   list-style: none;
   padding: 0;
@@ -62,6 +67,7 @@
   display: flex;
   gap: 3px;
 }
+
 .pos-header-textbox li {
   color: #fff;
   font-family: Abel;
@@ -71,6 +77,7 @@
   line-height: 140%; /* 22.4px */
   letter-spacing: 0.2px;
 }
+
 .pos-header-textbox li::before {
   content: "• ";
   color: #fff;
@@ -88,6 +95,7 @@
   background: #dfdfdf;
   filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
 }
+
 .pos-background {
   width: 873px;
   height: 638px;
@@ -95,12 +103,14 @@
   filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.5));
   position: relative;
 }
+
 .buttonList {
   position: absolute;
   z-index: 1;
   top: 70px;
   right: 10px;
 }
+
 .homeButton {
   position: absolute;
   z-index: 1;
@@ -110,11 +120,13 @@
 
 .tableBox-container {
   position: absolute;
-  top: 150px; /* Adjust positioning as needed */
+  top: 150px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
 }
 
 .tableBox {
@@ -125,7 +137,9 @@
   background: #fff;
   border: 1px solid #4ea9fd;
   display: flex;
-  position: absolute; /* To allow for manual positioning */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .tableNumber {
@@ -148,6 +162,6 @@
 
 .totalPrice {
   padding-left: 35px;
-  padding-top: 50px;
+  padding-top: 10px;
   vertical-align: bottom;
 }
