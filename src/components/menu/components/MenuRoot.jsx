@@ -101,7 +101,6 @@ const MenuRoot = (props) => {
       console.error("삭제 오류", error);
       handleShow();
     }
-    setCheckedItems([])
   };
 
   return (
