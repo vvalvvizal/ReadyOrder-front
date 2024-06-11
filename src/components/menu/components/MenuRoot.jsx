@@ -58,11 +58,12 @@ const MenuRoot = (props) => {
       AdminfetchData();
     }
   }, [props.userType]);
+
   const handleDelete = async () => {
     try {
       const itemsToDelete = Object.keys(checkedItems).filter(
-        (key) => checkedItems[key]
-      );
+        (key) => checkedItems[key] === true
+      ); 
       console.log("삭제할 항목:", itemsToDelete);
 
       // JWT 받아오기
@@ -90,6 +91,7 @@ const MenuRoot = (props) => {
           console.error(`항목 ${id} 삭제 오류:`, error);
           throw error; // 외부 catch로 에러 전달
         }
+        checkedItems[id] = false;
       }
 
       console.log("모든 항목이 성공적으로 삭제되었습니다.");
