@@ -4,11 +4,21 @@ import { ReactComponent as BackgroundSVG } from "./util/WoodBackground.svg";
 import { ReactComponent as Close } from "./util/Close.svg";
 import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
 import { ReactComponent as Home } from "./util/Home.svg";
+import Modal from "../../shared/modal/Modal";
 import axios from "axios";
 
 const PosPage = () => {
   const Num = 6;
   const [tableBills, setTableBills] = useState(new Array(Num));
+  const [showModal, setShowModal] = useState(false);
+  const viewModal = "billModal";
+  const handleShow = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   const positions = [
     { x: -200, y: 0 },
@@ -99,7 +109,7 @@ const PosPage = () => {
           </div>
           <div className={styles["tableBox-container"]}>
             {Array.from({ length: Num }).map((_, index) => (
-              <div key={index} className={styles.tableBox}>
+              <div key={index} className={styles.tableBox} onClick={handleShow}>
                 <p className={styles["tableNumber"]}>{index + 1}</p>
                 <p className={styles["totalPrice"]}>
                   {tableBills[index + 1]}원
@@ -109,6 +119,11 @@ const PosPage = () => {
           </div>
         </div>
       </div>
+      <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
+        <div className="BillModal">
+          <p style={{ fontSize: "18px" }}>테이블 영수증</p>
+        </div>
+      </Modal>
     </div>
   );
 };

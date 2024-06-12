@@ -18,6 +18,8 @@ const Modal = ({ show, onClose, viewModal, children }) => {
     case "QRCode":
       modalClass = styles.QRCodeModal;
       break;
+    case "billModal":
+      modalClass = styles.billModal;
     default:
       modalClass = styles.modal;
       break;
