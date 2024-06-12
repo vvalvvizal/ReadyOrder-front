@@ -166,5 +166,22 @@
   padding-top: 10px;
   vertical-align: bottom;
 }
-.BillModal {
+
+.resetbuttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 필요 시 조정 */
+}
+
+.resetbutton {
+  width: 80px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(218, 218, 218);
+}
+.resetbutton:hover {
+  background-color: #999999;
 }

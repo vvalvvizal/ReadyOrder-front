@@ -1,0 +1,22 @@
+.receipt {
+    width: 300px;
+    margin: 0 auto;
+}
+.center {
+    text-align: center;
+}
+.details, .totals {
+    width: 100%;
+    margin-top: 10px;
+}
+.details th, .details td, .totals th, .totals td {
+    padding: 5px;
+    text-align: left;
+}
+.totals th {
+    text-align: right;
+}
+.separator {
+    border-top: 1px solid #000;
+    margin: 10px 0;
+}

@@ -6,28 +6,27 @@ import { ReactComponent as ButtonList } from "./util/ButtonList.svg";
 import { ReactComponent as Home } from "./util/Home.svg";
 import Modal from "../../shared/modal/Modal";
 import axios from "axios";
+import BillPaper from "./bill/BiilPaper";
 
 const PosPage = () => {
   const Num = 6;
-  const [tableBills, setTableBills] = useState(new Array(Num));
+  const [tableBills, setTableBills] = useState(new Array(Num + 1));
+  const [papers, setPapers] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const viewModal = "billModal";
-  const handleShow = () => {
-    setShowModal(true);
-  };
 
+  const viewModal = "billModal";
+  const [selectedTable, setSelectedTable] = useState(null);
+
+  const handleShow = (tableNumber) => {
+    return () => {
+      setSelectedTable(tableNumber + 1);
+      setShowModal(true);
+    };
+  };
   const handleClose = () => {
+    setSelectedTable(null); // 모달이 닫힐 때 선택한 테이블 초기화
     setShowModal(false);
   };
-
-  const positions = [
-    { x: -200, y: 0 },
-    { x: 200, y: 50 },
-    { x: -200, y: 150 },
-    { x: 200, y: 200 },
-    { x: -200, y: 300 },
-    { x: 200, y: 330 },
-  ];
 
   const storedUserLoggedInData = JSON.parse(localStorage.getItem("userData"));
 
@@ -53,25 +52,47 @@ const PosPage = () => {
     };
 
     const tableBillsInit = async () => {
-      let tableBills = new Array(Num);
+      let tableBills = new Array(Num + 1);
+      let paper = new Array(Num + 1);
       for (var idx = 1; idx <= Num; idx++) {
         try {
           const response = await axios.get(
             `${process.env.REACT_APP_API_ROOT}/api/orders/${idx}/bill`
           );
+          paper[idx] = response.data;
           tableBills[idx] = response.data.total;
         } catch (error) {
           console.log(error);
         }
-        setTableBills(tableBills);
       }
+      setTableBills(tableBills);
+      setPapers(paper);
     };
     tableBillsInit();
 
     return () => {
       eventSource.close();
     };
-  }, [storedUserLoggedInData.userId]);
+  }, [storedUserLoggedInData.userId, showModal]);
+
+  const tableReset = async () => {
+    if (selectedTable !== null) {
+      try {
+        const response = await axios.delete(
+          `${process.env.REACT_APP_API_ROOT}/api/orders/${selectedTable}`
+        );
+        const updatedTableBills = [...tableBills];
+        updatedTableBills[selectedTable - 1] = response.data.total;
+        setTableBills(updatedTableBills);
+        console.log(`${selectedTable} 테이블 리셋 완료`);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    setTableBills([...tableBills][selectedTable]=0)
+    handleClose(); // 모달 닫기
+  };
 
   const getTodayDate = () => {
     const today = new Date();
@@ -109,7 +130,11 @@ const PosPage = () => {
           </div>
           <div className={styles["tableBox-container"]}>
             {Array.from({ length: Num }).map((_, index) => (
-              <div key={index} className={styles.tableBox} onClick={handleShow}>
+              <div
+                key={index}
+                className={styles.tableBox}
+                onClick={handleShow(index)}
+              >
                 <p className={styles["tableNumber"]}>{index + 1}</p>
                 <p className={styles["totalPrice"]}>
                   {tableBills[index + 1]}원
@@ -122,6 +147,15 @@ const PosPage = () => {
       <Modal show={showModal} onClose={handleClose} viewModal={viewModal}>
         <div className="BillModal">
           <p style={{ fontSize: "18px" }}>테이블 영수증</p>
+          <BillPaper
+            tableNumber={selectedTable}
+            paperInfo={papers[selectedTable]}
+          />
+          <div className={styles.resetbuttonContainer}>
+            <div className={styles.resetbutton} onClick={tableReset}>
+              계산완료
+            </div>
+          </div>
         </div>
       </Modal>
     </div>
