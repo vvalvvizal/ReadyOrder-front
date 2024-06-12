@@ -119,7 +119,7 @@ const ManagementMenuItem = (props) => {
                   />
                 </div>
                 <div className={styles["item-img"]}>
-                  <img src={URLRoot + item.image_url} alt={item.title} />
+                  <img src={URLRoot + item.image_url} />
                 </div>
                 <div className={styles["item-textbox"]}>
                   <div className={styles["item-title"]}>{item.title}</div>

@@ -4,6 +4,7 @@ import { ReactComponent as AddCart } from "../util/icon/AddCart.svg";
 import { NavLink, useParams } from "react-router-dom";
 import { CartContext } from "./CartContext";
 const URLRoot = `${process.env.REACT_APP_API_ROOT}/api`;
+
 const MenuItem = (props) => {
   // const { handleAddMenu } = useContext(CartContext);
 
@@ -20,6 +21,12 @@ const MenuItem = (props) => {
 
   const handleCategory = (category) => {
     setActiveCategory(category);
+  };
+
+  const parseTags = (text) => {
+    const tags = text.match(/#[^\s#]+/g) || [];
+    const otherText = text.replace(/#[^\s#]+/g, "").trim();
+    return { tags, otherText };
   };
 
   return (
@@ -43,34 +50,41 @@ const MenuItem = (props) => {
             .map((nowCategory) =>
               nowCategory.items
                 .filter((item) => item.available)
-                .map((item) => (
-                  <>
-                    <NavLink
-                      className={styles["item-content"]}
-                      to={{
-                        pathname: `/${uid}/order/menu/${tableNum}/${item._id}`,
-                        state: { item },
-                      }}
-                      key={item._id}
-                    >
-                      <div className={styles["item-textbox"]}>
-                        <div className={styles["item-title"]}>{item.title}</div>
-                        <div className={styles["item-tag-box"]}>
-                          <p>{item.tag}</p>
+                .map((item) => {
+                  const { tags, otherText } = parseTags(item.tag);
+                  return (
+                    <React.Fragment key={item._id}>
+                      <NavLink
+                        className={styles["item-content"]}
+                        to={{
+                          pathname: `/${uid}/order/menu/${tableNum}/${item._id}`,
+                          state: { item },
+                        }}
+                      >
+                        <div className={styles["item-textbox"]}>
+                          <div className={styles["item-title"]}>
+                            {item.title}
+                          </div>
+                          <div className={styles["item-tag-box"]}>
+                            <p className={styles.tags}>{tags.join(" ")}</p>
+                          </div>
+                          <div className={styles["item-price"]}>
+                            <p>{item.price.toLocaleString()}₩</p>
+                          </div>
                         </div>
-                        <div className={styles["item-price"]}>
-                          <p>{item.price.toLocaleString()}₩</p>
+                        <div className={styles["item-img"]}>
+                          <img
+                            src={URLRoot + item.image_url}
+                            alt={item.title}
+                          />
                         </div>
-                      </div>
-                      <div className={styles["item-img"]}>
-                        <img src={URLRoot + item.image_url} alt={item.title} />
-                      </div>
-                    </NavLink>
-                    {/* <div onClick={() => handleAddMenu(item._id)}>
-                      <AddCart className={styles.addCartButton} />
-                    </div> */}
-                  </>
-                ))
+                      </NavLink>
+                      {/* <div onClick={() => handleAddMenu(item._id)}>
+                        <AddCart className={styles.addCartButton} />
+                      </div> */}
+                    </React.Fragment>
+                  );
+                })
             )}
         </>
       )}

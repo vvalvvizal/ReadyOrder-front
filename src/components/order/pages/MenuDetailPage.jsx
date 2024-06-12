@@ -50,6 +50,13 @@ const MenuDetailPage = () => {
   const handleClose = () => {
     setShowModal(false);
   };
+
+  const parseTags = (text) => {
+    const tags = text.match(/#[^\s#]+/g) || [];
+    const otherText = text.replace(/#[^\s#]+/g, "").trim();
+    return { tags, otherText };
+  };
+
   return (
     <div>
       <Header viewHeader={viewHeader} />
@@ -67,7 +74,12 @@ const MenuDetailPage = () => {
                 </div>
               </div>
               <div className={styles["item-tag"]}>
-                <p>{item.tag}</p>
+                <p className={styles.tags}>
+                  {parseTags(item.tag).tags.join(" ")}
+                </p>
+                <p className={styles.otherText}>
+                  {parseTags(item.tag).otherText}
+                </p>
               </div>
               <div className={styles["item-button"]}>
                 <div className={styles["item-button-num"]}>

@@ -32,17 +32,17 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
 }
 
 .item-info-text h2 {
-  width: 50%;
+  width: 250px;
   color: #383838;
   font-family: "Hermeneus One";
   font-size: 25px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-align: left;
 }
 .item-info-text p {
   color: #383838;
@@ -55,20 +55,29 @@
 }
 .item-tag {
   margin: 0 20px;
+  overflow: hidden;
+  width: 100%;
+  height: 160px;
+}
+.tags {
+  font-size: 18px;
+  font-weight: 600;
+}
+.otherText {
+  font-size: 16px;
+  font-weight: 400;
 }
 .item-tag p {
   color: #767676;
   font-family: Poppins;
-  font-size: 18px;
   font-style: normal;
-  font-weight: 400;
   line-height: normal;
   width: 326px;
-  height: 30px;
+  height: 20px;
   flex-shrink: 0;
 }
 .item-button {
-  margin-top: 10%;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -125,14 +134,16 @@
   cursor: pointer;
 }
 .item-img {
-  margin-bottom: 20px;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 10%;
   flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .item-img img {
-  width: 90%;
+  width: 65%;
   height: auto;
 }
 .OrderModal {
