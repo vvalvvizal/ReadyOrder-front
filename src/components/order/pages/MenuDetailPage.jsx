@@ -56,6 +56,10 @@ const MenuDetailPage = () => {
     const otherText = text.replace(/#[^\s#]+/g, "").trim();
     return { tags, otherText };
   };
+  const formatText = (text) => {
+    if (!text) return "";
+    return text.replace(/\r\n|\r|\n/g, "<br>");
+  };
 
   return (
     <div>
@@ -77,9 +81,12 @@ const MenuDetailPage = () => {
                 <p className={styles.tags}>
                   {parseTags(item.tag).tags.join(" ")}
                 </p>
-                <p className={styles.otherText}>
-                  {parseTags(item.tag).otherText}
-                </p>
+                <p
+                  className={styles.otherText}
+                  dangerouslySetInnerHTML={{
+                    __html: formatText(parseTags(item.tag).otherText),
+                  }}
+                />
               </div>
               <div className={styles["item-button"]}>
                 <div className={styles["item-button-num"]}>
