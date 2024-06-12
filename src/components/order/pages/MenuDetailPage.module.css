@@ -137,15 +137,17 @@
   height: 300px;
   width: 100%;
   margin-bottom: 10%;
-  flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .item-img img {
-  width: 65%;
-  height: auto;
+  max-width: 70%;
+  max-height: 70%;
+  object-fit: cover;
 }
+
 .OrderModal {
   display: flex;
   flex-direction: column;
