@@ -12,7 +12,6 @@ const SelectButton = (props) => {
     }),
   };
 
-
   if (!props.categories || props.categories.length === 0) {
     return (
       <div>
@@ -29,7 +28,7 @@ const SelectButton = (props) => {
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     if (props.onCategoryChange) {
-      props.onCategoryChang                                                                                                                                 e(selectedOption.value);
+      props.onCategoryChange(selectedOption.value);
     }
     //console.log("선택된 옵션:", selectedOption.value);
   };
