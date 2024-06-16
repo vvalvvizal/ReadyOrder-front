@@ -29,7 +29,7 @@ const SelectButton = (props) => {
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     if (props.onCategoryChange) {
-      props.onCategoryChange(selectedOption.value);
+      props.onCategoryChang                                                                                                                                 e(selectedOption.value);
     }
     //console.log("선택된 옵션:", selectedOption.value);
   };

@@ -57,7 +57,7 @@ const CartPage = () => {
         <div key={itemId} className={styles["item-content"]}>
           <div className={styles["cart-item"]}>
             <img
-              src={URLRoot+image_url}
+              src={URLRoot + image_url}
               alt={title}
               className={styles["cart-item-img"]}
             />
@@ -128,7 +128,7 @@ const CartPage = () => {
                 style={{ textDecoration: "none" }}
               >
                 <button className={styles.orderButton} onClick={resetItem}>
-                  <p>메뉴판으로 이동</p>
+                  <p>메뉴판 이동</p>
                 </button>
               </NavLink>
               <NavLink

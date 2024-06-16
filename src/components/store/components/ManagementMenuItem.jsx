@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useRef,
 } from "react";
+import axios from "axios";
 import styles from "./ManagementMenuItem.module.css"; // CSS 모듈 import
 import Checkbox from "./checkbox/CheckBox";
 import Divider from "../../../shared/Divider/Divider";
@@ -51,22 +52,18 @@ const ManagementMenuItem = (props) => {
       const storedUserLoggedInData = JSON.parse(
         localStorage.getItem("userData")
       );
-      const response = await fetch(
+      const response = await axios.put(
         `${process.env.REACT_APP_API_ROOT}/api/menus/${itemId}/available`,
+        { available }, // Axios는 body를 자동으로 JSON.stringify 해줍니다.
         {
-          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${storedUserLoggedInData.token}`,
           },
-          body: JSON.stringify({ available }), // Stringify the body
         }
       );
-      if (!response.ok) {
-        throw new Error("put error");
-      }
-      const data = await response.json();
-      console.log("아이템 업데이트 성공:", data);
+
+      console.log("아이템 업데이트 성공:", response.data);
     } catch (error) {
       console.error("아이템 업데이트 실패:", error);
     }
