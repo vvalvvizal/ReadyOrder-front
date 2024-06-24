@@ -37,7 +37,9 @@ $ git clone https://github.com/Ready-Order/front.git
 
 <br>
 <p>
-![qr발급페이지](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/d99cc3fb-0d58-46ef-bf5b-eb0c05e23d7a) ![qr페이지](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/80c428a1-312e-46f0-83fe-ccd492fe991b)
+<img width="40%" alt="QR발급페이지" src="https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/f109719c-15bc-4bd3-b3be-25a53fd65c3a">
+<img width="40%" alt="QR접근페이지" src="https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/2a7946ed-b5c5-407d-a348-7347c7adb37e">
+
 </p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<QR발급페이지>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<QR 접근페이지>
 <br>
