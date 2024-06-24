@@ -41,15 +41,25 @@ $ git clone https://github.com/Ready-Order/front.git
 <img width="40%" alt="QR접근페이지" src="https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/2a7946ed-b5c5-407d-a348-7347c7adb37e">
 
 </p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<QR발급페이지>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<QR 접근페이지>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <고객페이지>
 <br>
+
+
+> 서비스에 가입하신 사장님은 메뉴와 매장 관리를 하실 수 있어요!
+
+![로그인](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/f2c952cb-59d5-46da-88b6-e28e1a738a43)
+
+
+사장님은 가게의 메뉴를 손쉽게 **생성**할 수 있으며, **삭제**와 판매상태를 **수정**할 수 있습니다.
+![메뉴생성 삭제 판매상태변경](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/a01d2f80-43fa-4c9b-91c1-29261d8abdc8)
 
 
 
 > POS페이지를 통해 실시간 주문 정보를 볼 수 있어요.
 
+이 POS 페이지는 사장님이 매장의 테이블 상태와 주문 내역을 실시간으로 확인하고 관리할 수 있도록 하여, 원활한 매장 운영을 지원합니다.
+
 ![pos영수증모달](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/029e12b4-cc6c-43d3-a548-7e92cc3619e8)
 ![pos페이지](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/8222ee78-c719-41ca-a873-f4228de47b63)
  
 
-<고객 사용자 모드> 
