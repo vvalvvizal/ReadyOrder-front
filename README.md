@@ -49,6 +49,7 @@ $ git clone https://github.com/Ready-Order/front.git
 
 ![로그인](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/f2c952cb-59d5-46da-88b6-e28e1a738a43)
 
+<br>
 
 사장님은 가게의 메뉴를 손쉽게 **생성**할 수 있으며, **삭제**와 판매상태를 **수정**할 수 있습니다.
 ![메뉴생성 삭제 판매상태변경](https://github.com/vvalvvizal/ReadyOrder-front/assets/83233101/a01d2f80-43fa-4c9b-91c1-29261d8abdc8)
